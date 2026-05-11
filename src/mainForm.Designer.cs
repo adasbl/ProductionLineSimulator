@@ -40,6 +40,9 @@
             cpuFillPanel = new Panel();
             ramBackgroudPanel = new Panel();
             ramFillPanel = new Panel();
+            userAttentionButton = new Button();
+            userAttentionTimer = new System.Windows.Forms.Timer(components);
+            engineButton = new Button();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             SuspendLayout();
@@ -53,7 +56,7 @@
             // cpuUsageLabel
             // 
             cpuUsageLabel.AutoSize = true;
-            cpuUsageLabel.Location = new Point(17, 32);
+            cpuUsageLabel.Location = new Point(47, 32);
             cpuUsageLabel.Margin = new Padding(4, 0, 4, 0);
             cpuUsageLabel.Name = "cpuUsageLabel";
             cpuUsageLabel.Size = new Size(159, 25);
@@ -63,18 +66,17 @@
             // ramUsageLabel
             // 
             ramUsageLabel.AutoSize = true;
-            ramUsageLabel.Location = new Point(17, 122);
+            ramUsageLabel.Location = new Point(47, 122);
             ramUsageLabel.Margin = new Padding(4, 0, 4, 0);
             ramUsageLabel.Name = "ramUsageLabel";
             ramUsageLabel.Size = new Size(169, 25);
             ramUsageLabel.TabIndex = 2;
             ramUsageLabel.Text = "no RAM usage data";
-            ramUsageLabel.Click += ramUsageLabel_Click;
             // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(1064, 32);
+            usernameLabel.Location = new Point(1111, 32);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(73, 25);
             usernameLabel.TabIndex = 3;
@@ -83,7 +85,7 @@
             // accessLabel
             // 
             accessLabel.AutoSize = true;
-            accessLabel.Location = new Point(1064, 78);
+            accessLabel.Location = new Point(1111, 78);
             accessLabel.Name = "accessLabel";
             accessLabel.Size = new Size(73, 25);
             accessLabel.TabIndex = 4;
@@ -93,7 +95,7 @@
             // 
             usernameTitleLabel.AutoSize = true;
             usernameTitleLabel.Enabled = false;
-            usernameTitleLabel.Location = new Point(1003, 32);
+            usernameTitleLabel.Location = new Point(1050, 32);
             usernameTitleLabel.Margin = new Padding(4, 0, 4, 0);
             usernameTitleLabel.Name = "usernameTitleLabel";
             usernameTitleLabel.Size = new Size(51, 25);
@@ -104,7 +106,7 @@
             // 
             accessTitleLabel.AutoSize = true;
             accessTitleLabel.Enabled = false;
-            accessTitleLabel.Location = new Point(940, 78);
+            accessTitleLabel.Location = new Point(987, 78);
             accessTitleLabel.Margin = new Padding(4, 0, 4, 0);
             accessTitleLabel.Name = "accessTitleLabel";
             accessTitleLabel.Size = new Size(123, 25);
@@ -115,7 +117,7 @@
             // 
             cpuBackgroudPanel.BackColor = Color.Gray;
             cpuBackgroudPanel.Controls.Add(cpuFillPanel);
-            cpuBackgroudPanel.Location = new Point(20, 62);
+            cpuBackgroudPanel.Location = new Point(50, 62);
             cpuBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             cpuBackgroudPanel.Name = "cpuBackgroudPanel";
             cpuBackgroudPanel.Size = new Size(229, 30);
@@ -134,7 +136,7 @@
             // 
             ramBackgroudPanel.BackColor = Color.Gray;
             ramBackgroudPanel.Controls.Add(ramFillPanel);
-            ramBackgroudPanel.Location = new Point(20, 152);
+            ramBackgroudPanel.Location = new Point(50, 152);
             ramBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             ramBackgroudPanel.Name = "ramBackgroudPanel";
             ramBackgroudPanel.Size = new Size(229, 30);
@@ -149,11 +151,40 @@
             ramFillPanel.Size = new Size(114, 30);
             ramFillPanel.TabIndex = 10;
             // 
+            // userAttentionButton
+            // 
+            userAttentionButton.BackColor = Color.IndianRed;
+            userAttentionButton.FlatStyle = FlatStyle.Flat;
+            userAttentionButton.Location = new Point(434, 563);
+            userAttentionButton.Name = "userAttentionButton";
+            userAttentionButton.Size = new Size(353, 110);
+            userAttentionButton.TabIndex = 9;
+            userAttentionButton.UseVisualStyleBackColor = false;
+            userAttentionButton.Click += userAttentionButton_Click;
+            // 
+            // userAttentionTimer
+            // 
+            userAttentionTimer.Enabled = true;
+            userAttentionTimer.Interval = 1000;
+            userAttentionTimer.Tick += userAttentionTimer_Tick;
+            // 
+            // engineButton
+            // 
+            engineButton.Location = new Point(1050, 278);
+            engineButton.Name = "engineButton";
+            engineButton.Size = new Size(100, 100);
+            engineButton.TabIndex = 12;
+            engineButton.Text = "engine";
+            engineButton.UseVisualStyleBackColor = true;
+            engineButton.Click += engineButton_Click;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1243, 723);
+            Controls.Add(engineButton);
+            Controls.Add(userAttentionButton);
             Controls.Add(ramBackgroudPanel);
             Controls.Add(cpuBackgroudPanel);
             Controls.Add(accessTitleLabel);
@@ -183,5 +214,8 @@
         private Panel cpuFillPanel;
         private Panel ramBackgroudPanel;
         private Panel ramFillPanel;
+        private Button userAttentionButton;
+        private System.Windows.Forms.Timer userAttentionTimer;
+        private Button engineButton;
     }
 }

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using LibreHardwareMonitor.Hardware;
 
 namespace productionLine
@@ -9,6 +10,10 @@ namespace productionLine
         private PerformanceCounter ramUsageCounter;
 
         private Computer computer;
+
+        private bool engineOn = false;
+        private int attentionCounter = 31;
+        private int engineShutdownCounter = 11;
 
         public mainForm()
         {
@@ -26,23 +31,16 @@ namespace productionLine
         private void mainForm_Load(object sender, EventArgs e)
         {
             usernameLabel.Text = confirmedUser.Username;
-            accessLabel.Text = $"{confirmedUser.AuthorizationLvl}";
+            if (confirmedUser.AuthorizationLvl == 3) { accessLabel.Text = "admin"; }
+            else if (confirmedUser.AuthorizationLvl == 2) { accessLabel.Text = "operator"; }
+            else if (confirmedUser.AuthorizationLvl == 1) { accessLabel.Text = "viewer"; }
+            else { accessLabel.Text = "error"; }
         }
 
-        private void parametersTimer_Tick(object sender, EventArgs e)
-        {
-            parametersUpdate(cpuUsageCounter.NextValue(), cpuUsageLabel, "CPU usage: ", cpuFillPanel, cpuBackgroudPanel, 20, 80);
-            parametersUpdate(ramUsageCounter.NextValue(), ramUsageLabel, "RAM usage: ", ramFillPanel, ramBackgroudPanel, 60, 80);
-        }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             computer.Close();
             base.OnFormClosing(e);
-        }
-
-        private void ramUsageLabel_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void parametersUpdate(float usage, Label label, string textPrefix, Panel fillPanel, Panel backgroudPanel, int colourThreshold1, int colourThreshold2)
@@ -53,6 +51,47 @@ namespace productionLine
             if ((int)usage > colourThreshold2) fillPanel.BackColor = Color.Red;
             else if ((int)usage > colourThreshold1) fillPanel.BackColor = Color.Yellow;
             else fillPanel.BackColor = Color.LimeGreen;
+        }
+
+        private void parametersTimer_Tick(object sender, EventArgs e)
+        {
+            parametersUpdate(cpuUsageCounter.NextValue(), cpuUsageLabel, "CPU usage: ", cpuFillPanel, cpuBackgroudPanel, 20, 80);
+            parametersUpdate(ramUsageCounter.NextValue(), ramUsageLabel, "RAM usage: ", ramFillPanel, ramBackgroudPanel, 60, 80);
+        }
+        private void userAttentionTimer_Tick(object sender, EventArgs e)
+        {
+            if (engineOn == true)
+            {
+                attentionCounter -= 1;
+                if (attentionCounter >= 0)
+                {
+                    userAttentionButton.Text = $"{attentionCounter}";
+                }
+                else if (attentionCounter < 0)
+                {
+                    engineShutdownCounter -= 1;
+                    userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
+                    if (engineShutdownCounter < 0)
+                    {
+                        engineOn = false;
+                        attentionCounter = 31;
+                        engineShutdownCounter = 11;
+                        userAttentionButton.Enabled = false;
+                        userAttentionButton.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void userAttentionButton_Click(object sender, EventArgs e)
+        {
+            attentionCounter = 31;
+            engineShutdownCounter = 11;
+        }
+
+        private void engineButton_Click(object sender, EventArgs e)
+        {
+            engineOn = true;
         }
     }
 }
