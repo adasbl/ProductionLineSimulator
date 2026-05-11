@@ -12,6 +12,8 @@ namespace productionLine
         private Computer computer;
 
         private bool engineOn = false;
+        private bool resetState = false;
+        private bool stopState = false;
         private int attentionCounter = 31;
         private int engineShutdownCounter = 11;
 
@@ -71,13 +73,9 @@ namespace productionLine
                 {
                     engineShutdownCounter -= 1;
                     userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
-                    if (engineShutdownCounter < 0)
+                    if (engineShutdownCounter <= 0)
                     {
-                        engineOn = false;
-                        attentionCounter = 31;
-                        engineShutdownCounter = 11;
-                        userAttentionButton.Enabled = false;
-                        userAttentionButton.Text = string.Empty;
+                        machineStop();
                     }
                 }
             }
@@ -85,13 +83,71 @@ namespace productionLine
 
         private void userAttentionButton_Click(object sender, EventArgs e)
         {
-            attentionCounter = 31;
-            engineShutdownCounter = 11;
+            resetTimers();
         }
 
         private void engineButton_Click(object sender, EventArgs e)
         {
-            engineOn = true;
+            if (resetState == false && stopState == false)
+            {
+                engineOn = !engineOn;
+                if (engineOn)
+                {
+                    processPanel.BackColor = Color.GreenYellow;
+                    userAttentionButton.Enabled = true;
+                    userAttentionButton.Text = $"{attentionCounter}";
+                    resetTimers();
+                }
+                else
+                {
+                    processPanel.BackColor = Color.Silver;
+                    userAttentionButton.Enabled = false;
+                    userAttentionButton.Text = "ENGINE OFF";
+                    resetTimers();
+                }
+            }
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            if (stopState == false)
+            {
+                resetState = false;
+                resetButton.BackColor = SystemColors.Control;
+            }
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            stopState = !stopState;
+            if (stopState == true)
+            {
+                machineStop();
+                stopButton.BackColor = Color.Red;
+            }
+            else
+            {
+                stopButton.BackColor = SystemColors.Control;
+            }
+            
+        }
+
+        private void machineStop()
+        {
+            engineOn = false;
+            resetState = true;
+            resetButton.BackColor = Color.Red;
+            resetTimers();
+            userAttentionButton.Enabled = false;
+            userAttentionButton.Text = string.Empty;
+            processPanel.BackColor = Color.Silver;
+        }
+
+        private void resetTimers()
+        {
+            attentionCounter = 31;
+            engineShutdownCounter = 11;
+        }
+
     }
 }

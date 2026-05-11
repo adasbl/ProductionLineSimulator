@@ -43,6 +43,9 @@
             userAttentionButton = new Button();
             userAttentionTimer = new System.Windows.Forms.Timer(components);
             engineButton = new Button();
+            resetButton = new Button();
+            stopButton = new Button();
+            processPanel = new Panel();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             SuspendLayout();
@@ -56,38 +59,38 @@
             // cpuUsageLabel
             // 
             cpuUsageLabel.AutoSize = true;
-            cpuUsageLabel.Location = new Point(47, 32);
-            cpuUsageLabel.Margin = new Padding(4, 0, 4, 0);
+            cpuUsageLabel.Location = new Point(33, 19);
             cpuUsageLabel.Name = "cpuUsageLabel";
-            cpuUsageLabel.Size = new Size(159, 25);
+            cpuUsageLabel.Size = new Size(104, 15);
             cpuUsageLabel.TabIndex = 1;
             cpuUsageLabel.Text = "no cpu usage data";
             // 
             // ramUsageLabel
             // 
             ramUsageLabel.AutoSize = true;
-            ramUsageLabel.Location = new Point(47, 122);
-            ramUsageLabel.Margin = new Padding(4, 0, 4, 0);
+            ramUsageLabel.Location = new Point(33, 73);
             ramUsageLabel.Name = "ramUsageLabel";
-            ramUsageLabel.Size = new Size(169, 25);
+            ramUsageLabel.Size = new Size(110, 15);
             ramUsageLabel.TabIndex = 2;
             ramUsageLabel.Text = "no RAM usage data";
             // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(1111, 32);
+            usernameLabel.Location = new Point(778, 19);
+            usernameLabel.Margin = new Padding(2, 0, 2, 0);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(73, 25);
+            usernameLabel.Size = new Size(47, 15);
             usernameLabel.TabIndex = 3;
             usernameLabel.Text = "no data";
             // 
             // accessLabel
             // 
             accessLabel.AutoSize = true;
-            accessLabel.Location = new Point(1111, 78);
+            accessLabel.Location = new Point(778, 47);
+            accessLabel.Margin = new Padding(2, 0, 2, 0);
             accessLabel.Name = "accessLabel";
-            accessLabel.Size = new Size(73, 25);
+            accessLabel.Size = new Size(47, 15);
             accessLabel.TabIndex = 4;
             accessLabel.Text = "no data";
             // 
@@ -95,10 +98,9 @@
             // 
             usernameTitleLabel.AutoSize = true;
             usernameTitleLabel.Enabled = false;
-            usernameTitleLabel.Location = new Point(1050, 32);
-            usernameTitleLabel.Margin = new Padding(4, 0, 4, 0);
+            usernameTitleLabel.Location = new Point(735, 19);
             usernameTitleLabel.Name = "usernameTitleLabel";
-            usernameTitleLabel.Size = new Size(51, 25);
+            usernameTitleLabel.Size = new Size(33, 15);
             usernameTitleLabel.TabIndex = 5;
             usernameTitleLabel.Text = "User:";
             // 
@@ -106,10 +108,9 @@
             // 
             accessTitleLabel.AutoSize = true;
             accessTitleLabel.Enabled = false;
-            accessTitleLabel.Location = new Point(987, 78);
-            accessTitleLabel.Margin = new Padding(4, 0, 4, 0);
+            accessTitleLabel.Location = new Point(691, 47);
             accessTitleLabel.Name = "accessTitleLabel";
-            accessTitleLabel.Size = new Size(123, 25);
+            accessTitleLabel.Size = new Size(82, 15);
             accessTitleLabel.TabIndex = 6;
             accessTitleLabel.Text = "Authorization:";
             // 
@@ -117,47 +118,44 @@
             // 
             cpuBackgroudPanel.BackColor = Color.Gray;
             cpuBackgroudPanel.Controls.Add(cpuFillPanel);
-            cpuBackgroudPanel.Location = new Point(50, 62);
-            cpuBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
+            cpuBackgroudPanel.Location = new Point(35, 37);
             cpuBackgroudPanel.Name = "cpuBackgroudPanel";
-            cpuBackgroudPanel.Size = new Size(229, 30);
+            cpuBackgroudPanel.Size = new Size(160, 18);
             cpuBackgroudPanel.TabIndex = 7;
             // 
             // cpuFillPanel
             // 
             cpuFillPanel.BackColor = Color.LimeGreen;
             cpuFillPanel.Location = new Point(0, 0);
-            cpuFillPanel.Margin = new Padding(4, 5, 4, 5);
             cpuFillPanel.Name = "cpuFillPanel";
-            cpuFillPanel.Size = new Size(114, 30);
+            cpuFillPanel.Size = new Size(80, 18);
             cpuFillPanel.TabIndex = 9;
             // 
             // ramBackgroudPanel
             // 
             ramBackgroudPanel.BackColor = Color.Gray;
             ramBackgroudPanel.Controls.Add(ramFillPanel);
-            ramBackgroudPanel.Location = new Point(50, 152);
-            ramBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
+            ramBackgroudPanel.Location = new Point(35, 91);
             ramBackgroudPanel.Name = "ramBackgroudPanel";
-            ramBackgroudPanel.Size = new Size(229, 30);
+            ramBackgroudPanel.Size = new Size(160, 18);
             ramBackgroudPanel.TabIndex = 8;
             // 
             // ramFillPanel
             // 
             ramFillPanel.BackColor = Color.LimeGreen;
             ramFillPanel.Location = new Point(0, 0);
-            ramFillPanel.Margin = new Padding(4, 5, 4, 5);
             ramFillPanel.Name = "ramFillPanel";
-            ramFillPanel.Size = new Size(114, 30);
+            ramFillPanel.Size = new Size(80, 18);
             ramFillPanel.TabIndex = 10;
             // 
             // userAttentionButton
             // 
             userAttentionButton.BackColor = Color.IndianRed;
             userAttentionButton.FlatStyle = FlatStyle.Flat;
-            userAttentionButton.Location = new Point(434, 563);
+            userAttentionButton.Location = new Point(304, 338);
+            userAttentionButton.Margin = new Padding(2);
             userAttentionButton.Name = "userAttentionButton";
-            userAttentionButton.Size = new Size(353, 110);
+            userAttentionButton.Size = new Size(247, 66);
             userAttentionButton.TabIndex = 9;
             userAttentionButton.UseVisualStyleBackColor = false;
             userAttentionButton.Click += userAttentionButton_Click;
@@ -170,19 +168,51 @@
             // 
             // engineButton
             // 
-            engineButton.Location = new Point(1050, 278);
+            engineButton.Location = new Point(735, 157);
+            engineButton.Margin = new Padding(2);
             engineButton.Name = "engineButton";
-            engineButton.Size = new Size(100, 100);
+            engineButton.Size = new Size(70, 70);
             engineButton.TabIndex = 12;
             engineButton.Text = "engine";
             engineButton.UseVisualStyleBackColor = true;
             engineButton.Click += engineButton_Click;
             // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(735, 232);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(70, 70);
+            resetButton.TabIndex = 13;
+            resetButton.Text = "RESET";
+            resetButton.UseVisualStyleBackColor = true;
+            resetButton.Click += resetButton_Click;
+            // 
+            // stopButton
+            // 
+            stopButton.Location = new Point(735, 308);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(70, 70);
+            stopButton.TabIndex = 14;
+            stopButton.Text = "E-STOP";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += stopButton_Click;
+            // 
+            // processPanel
+            // 
+            processPanel.BackColor = Color.Silver;
+            processPanel.Location = new Point(304, 157);
+            processPanel.Name = "processPanel";
+            processPanel.Size = new Size(247, 100);
+            processPanel.TabIndex = 15;
+            // 
             // mainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1243, 723);
+            ClientSize = new Size(870, 434);
+            Controls.Add(processPanel);
+            Controls.Add(stopButton);
+            Controls.Add(resetButton);
             Controls.Add(engineButton);
             Controls.Add(userAttentionButton);
             Controls.Add(ramBackgroudPanel);
@@ -193,6 +223,7 @@
             Controls.Add(usernameLabel);
             Controls.Add(ramUsageLabel);
             Controls.Add(cpuUsageLabel);
+            Margin = new Padding(2);
             Name = "mainForm";
             Text = "Production Line Symulation";
             Load += mainForm_Load;
@@ -217,5 +248,8 @@
         private Button userAttentionButton;
         private System.Windows.Forms.Timer userAttentionTimer;
         private Button engineButton;
+        private Button resetButton;
+        private Button stopButton;
+        private Panel processPanel;
     }
 }
