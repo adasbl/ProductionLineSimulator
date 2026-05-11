@@ -86,27 +86,29 @@ namespace productionLine
             resetTimers();
         }
 
-        private void engineButton_Click(object sender, EventArgs e)
+        private void engineStartButton_Click(object sender, EventArgs e)
         {
             if (resetState == false && stopState == false)
             {
-                engineOn = !engineOn;
-                if (engineOn)
-                {
-                    processPanel.BackColor = Color.GreenYellow;
-                    userAttentionButton.Enabled = true;
-                    userAttentionButton.Text = $"{attentionCounter}";
-                    resetTimers();
-                }
-                else
-                {
-                    processPanel.BackColor = Color.Silver;
-                    userAttentionButton.Enabled = false;
-                    userAttentionButton.Text = "ENGINE OFF";
-                    resetTimers();
-                }
+                engineOn = true;
+                processPanel.BackColor = Color.GreenYellow;
+                userAttentionButton.Enabled = true;
+                userAttentionButton.Text = $"{attentionCounter}";
+                resetTimers();
             }
         }
+        private void engineStopButton_Click(object sender, EventArgs e)
+        {
+            if (engineOn == true)
+            {
+                engineOn = false;
+                processPanel.BackColor = Color.Silver;
+                userAttentionButton.Enabled = false;
+                userAttentionButton.Text = "ENGINE OFF";
+                resetTimers();
+            }
+        }
+    
 
         private void resetButton_Click(object sender, EventArgs e)
         {
@@ -117,19 +119,19 @@ namespace productionLine
             }
         }
 
-        private void stopButton_Click(object sender, EventArgs e)
+        private void eStopButton_Click(object sender, EventArgs e)
         {
             stopState = !stopState;
             if (stopState == true)
             {
                 machineStop();
-                stopButton.BackColor = Color.Red;
+                eStopButton.BackColor = Color.Red;
             }
             else
             {
-                stopButton.BackColor = SystemColors.Control;
+                eStopButton.BackColor = SystemColors.Control;
             }
-            
+
         }
 
         private void machineStop()
@@ -148,6 +150,5 @@ namespace productionLine
             attentionCounter = 31;
             engineShutdownCounter = 11;
         }
-
-    }
+    } 
 }

@@ -42,10 +42,15 @@
             ramFillPanel = new Panel();
             userAttentionButton = new Button();
             userAttentionTimer = new System.Windows.Forms.Timer(components);
-            engineButton = new Button();
+            engineStartButton = new Button();
             resetButton = new Button();
-            stopButton = new Button();
+            eStopButton = new Button();
             processPanel = new Panel();
+            engineStopButton = new Button();
+            engineStopLabel = new Label();
+            engineStartLabel = new Label();
+            label3 = new Label();
+            label4 = new Label();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             SuspendLayout();
@@ -166,20 +171,20 @@
             userAttentionTimer.Interval = 1000;
             userAttentionTimer.Tick += userAttentionTimer_Tick;
             // 
-            // engineButton
+            // engineStartButton
             // 
-            engineButton.Location = new Point(735, 157);
-            engineButton.Margin = new Padding(2);
-            engineButton.Name = "engineButton";
-            engineButton.Size = new Size(70, 70);
-            engineButton.TabIndex = 12;
-            engineButton.Text = "engine";
-            engineButton.UseVisualStyleBackColor = true;
-            engineButton.Click += engineButton_Click;
+            engineStartButton.Location = new Point(735, 209);
+            engineStartButton.Margin = new Padding(2);
+            engineStartButton.Name = "engineStartButton";
+            engineStartButton.Size = new Size(70, 70);
+            engineStartButton.TabIndex = 12;
+            engineStartButton.Text = "Engine Start";
+            engineStartButton.UseVisualStyleBackColor = true;
+            engineStartButton.Click += engineStartButton_Click;
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(735, 232);
+            resetButton.Location = new Point(632, 308);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(70, 70);
             resetButton.TabIndex = 13;
@@ -187,15 +192,15 @@
             resetButton.UseVisualStyleBackColor = true;
             resetButton.Click += resetButton_Click;
             // 
-            // stopButton
+            // eStopButton
             // 
-            stopButton.Location = new Point(735, 308);
-            stopButton.Name = "stopButton";
-            stopButton.Size = new Size(70, 70);
-            stopButton.TabIndex = 14;
-            stopButton.Text = "E-STOP";
-            stopButton.UseVisualStyleBackColor = true;
-            stopButton.Click += stopButton_Click;
+            eStopButton.Location = new Point(735, 308);
+            eStopButton.Name = "eStopButton";
+            eStopButton.Size = new Size(70, 70);
+            eStopButton.TabIndex = 14;
+            eStopButton.Text = "E-STOP";
+            eStopButton.UseVisualStyleBackColor = true;
+            eStopButton.Click += eStopButton_Click;
             // 
             // processPanel
             // 
@@ -205,15 +210,67 @@
             processPanel.Size = new Size(247, 100);
             processPanel.TabIndex = 15;
             // 
+            // engineStopButton
+            // 
+            engineStopButton.Location = new Point(632, 209);
+            engineStopButton.Margin = new Padding(2);
+            engineStopButton.Name = "engineStopButton";
+            engineStopButton.Size = new Size(70, 70);
+            engineStopButton.TabIndex = 16;
+            engineStopButton.Text = "Engine Stop";
+            engineStopButton.UseVisualStyleBackColor = true;
+            engineStopButton.Click += engineStopButton_Click;
+            // 
+            // engineStopLabel
+            // 
+            engineStopLabel.AutoSize = true;
+            engineStopLabel.Location = new Point(632, 192);
+            engineStopLabel.Name = "engineStopLabel";
+            engineStopLabel.Size = new Size(70, 15);
+            engineStopLabel.TabIndex = 17;
+            engineStopLabel.Text = "Engine Stop";
+            // 
+            // engineStartLabel
+            // 
+            engineStartLabel.AutoSize = true;
+            engineStartLabel.Location = new Point(735, 192);
+            engineStartLabel.Name = "engineStartLabel";
+            engineStartLabel.Size = new Size(70, 15);
+            engineStartLabel.TabIndex = 18;
+            engineStartLabel.Text = "Engine Start";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(648, 290);
+            label3.Name = "label3";
+            label3.Size = new Size(39, 15);
+            label3.TabIndex = 19;
+            label3.Text = "RESET";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(747, 290);
+            label4.Name = "label4";
+            label4.Size = new Size(46, 15);
+            label4.TabIndex = 20;
+            label4.Text = "E-STOP";
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(870, 434);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(engineStartLabel);
+            Controls.Add(engineStopLabel);
+            Controls.Add(engineStopButton);
             Controls.Add(processPanel);
-            Controls.Add(stopButton);
+            Controls.Add(eStopButton);
             Controls.Add(resetButton);
-            Controls.Add(engineButton);
+            Controls.Add(engineStartButton);
             Controls.Add(userAttentionButton);
             Controls.Add(ramBackgroudPanel);
             Controls.Add(cpuBackgroudPanel);
@@ -247,9 +304,14 @@
         private Panel ramFillPanel;
         private Button userAttentionButton;
         private System.Windows.Forms.Timer userAttentionTimer;
-        private Button engineButton;
+        private Button engineStartButton;
         private Button resetButton;
-        private Button stopButton;
+        private Button eStopButton;
         private Panel processPanel;
+        private Button engineStopButton;
+        private Label engineStopLabel;
+        private Label engineStartLabel;
+        private Label label3;
+        private Label label4;
     }
 }
