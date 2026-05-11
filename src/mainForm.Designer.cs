@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             parametersTimer = new System.Windows.Forms.Timer(components);
             cpuUsageLabel = new Label();
             ramUsageLabel = new Label();
@@ -173,32 +174,35 @@
             // 
             // engineStartButton
             // 
+            engineStartButton.BackgroundImage = (Image)resources.GetObject("engineStartButton.BackgroundImage");
+            engineStartButton.BackgroundImageLayout = ImageLayout.Stretch;
             engineStartButton.Location = new Point(735, 209);
             engineStartButton.Margin = new Padding(2);
             engineStartButton.Name = "engineStartButton";
             engineStartButton.Size = new Size(70, 70);
             engineStartButton.TabIndex = 12;
-            engineStartButton.Text = "Engine Start";
             engineStartButton.UseVisualStyleBackColor = true;
             engineStartButton.Click += engineStartButton_Click;
             // 
             // resetButton
             // 
+            resetButton.BackgroundImage = (Image)resources.GetObject("resetButton.BackgroundImage");
+            resetButton.BackgroundImageLayout = ImageLayout.Stretch;
             resetButton.Location = new Point(632, 308);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(70, 70);
             resetButton.TabIndex = 13;
-            resetButton.Text = "RESET";
             resetButton.UseVisualStyleBackColor = true;
             resetButton.Click += resetButton_Click;
             // 
             // eStopButton
             // 
+            eStopButton.BackgroundImage = (Image)resources.GetObject("eStopButton.BackgroundImage");
+            eStopButton.BackgroundImageLayout = ImageLayout.Stretch;
             eStopButton.Location = new Point(735, 308);
             eStopButton.Name = "eStopButton";
             eStopButton.Size = new Size(70, 70);
             eStopButton.TabIndex = 14;
-            eStopButton.Text = "E-STOP";
             eStopButton.UseVisualStyleBackColor = true;
             eStopButton.Click += eStopButton_Click;
             // 
@@ -212,12 +216,13 @@
             // 
             // engineStopButton
             // 
+            engineStopButton.BackgroundImage = (Image)resources.GetObject("engineStopButton.BackgroundImage");
+            engineStopButton.BackgroundImageLayout = ImageLayout.Stretch;
             engineStopButton.Location = new Point(632, 209);
             engineStopButton.Margin = new Padding(2);
             engineStopButton.Name = "engineStopButton";
             engineStopButton.Size = new Size(70, 70);
             engineStopButton.TabIndex = 16;
-            engineStopButton.Text = "Engine Stop";
             engineStopButton.UseVisualStyleBackColor = true;
             engineStopButton.Click += engineStopButton_Click;
             // 
