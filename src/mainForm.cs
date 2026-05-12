@@ -16,6 +16,7 @@ namespace productionLine
         private bool stopState = false;
         private int attentionCounter = 31;
         private int engineShutdownCounter = 11;
+        private int engineTemerature = 30;
 
         public mainForm()
         {
@@ -81,6 +82,18 @@ namespace productionLine
             }
         }
 
+        private void engineTimer_Tick(object sender, EventArgs e)
+        {
+            if (engineOn == true)
+            {
+                segmentTempLabel.Text = $"{engineTemerature}°";
+            }
+            else
+            {
+                segmentTempLabel.Text = "---";
+            }
+        }
+
         private void userAttentionButton_Click(object sender, EventArgs e)
         {
             resetTimers();
@@ -93,7 +106,6 @@ namespace productionLine
                 engineOn = true;
                 processPanel.BackColor = Color.GreenYellow;
                 userAttentionButton.Enabled = true;
-                userAttentionButton.Text = $"{attentionCounter}";
                 resetTimers();
             }
         }
@@ -108,7 +120,7 @@ namespace productionLine
                 resetTimers();
             }
         }
-    
+
 
         private void resetButton_Click(object sender, EventArgs e)
         {
@@ -150,5 +162,12 @@ namespace productionLine
             attentionCounter = 31;
             engineShutdownCounter = 11;
         }
-    } 
+
+        private void coolingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+    }
 }

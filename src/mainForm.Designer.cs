@@ -52,6 +52,10 @@
             engineStartLabel = new Label();
             label3 = new Label();
             label4 = new Label();
+            segmentTempLabel = new Label();
+            engineTimer = new System.Windows.Forms.Timer(components);
+            coolingLabel = new Label();
+            coolingButton = new Button();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             SuspendLayout();
@@ -65,38 +69,38 @@
             // cpuUsageLabel
             // 
             cpuUsageLabel.AutoSize = true;
-            cpuUsageLabel.Location = new Point(33, 19);
+            cpuUsageLabel.Location = new Point(47, 32);
+            cpuUsageLabel.Margin = new Padding(4, 0, 4, 0);
             cpuUsageLabel.Name = "cpuUsageLabel";
-            cpuUsageLabel.Size = new Size(104, 15);
+            cpuUsageLabel.Size = new Size(159, 25);
             cpuUsageLabel.TabIndex = 1;
             cpuUsageLabel.Text = "no cpu usage data";
             // 
             // ramUsageLabel
             // 
             ramUsageLabel.AutoSize = true;
-            ramUsageLabel.Location = new Point(33, 73);
+            ramUsageLabel.Location = new Point(47, 122);
+            ramUsageLabel.Margin = new Padding(4, 0, 4, 0);
             ramUsageLabel.Name = "ramUsageLabel";
-            ramUsageLabel.Size = new Size(110, 15);
+            ramUsageLabel.Size = new Size(169, 25);
             ramUsageLabel.TabIndex = 2;
             ramUsageLabel.Text = "no RAM usage data";
             // 
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(778, 19);
-            usernameLabel.Margin = new Padding(2, 0, 2, 0);
+            usernameLabel.Location = new Point(1111, 32);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(47, 15);
+            usernameLabel.Size = new Size(73, 25);
             usernameLabel.TabIndex = 3;
             usernameLabel.Text = "no data";
             // 
             // accessLabel
             // 
             accessLabel.AutoSize = true;
-            accessLabel.Location = new Point(778, 47);
-            accessLabel.Margin = new Padding(2, 0, 2, 0);
+            accessLabel.Location = new Point(1111, 78);
             accessLabel.Name = "accessLabel";
-            accessLabel.Size = new Size(47, 15);
+            accessLabel.Size = new Size(73, 25);
             accessLabel.TabIndex = 4;
             accessLabel.Text = "no data";
             // 
@@ -104,9 +108,10 @@
             // 
             usernameTitleLabel.AutoSize = true;
             usernameTitleLabel.Enabled = false;
-            usernameTitleLabel.Location = new Point(735, 19);
+            usernameTitleLabel.Location = new Point(1050, 32);
+            usernameTitleLabel.Margin = new Padding(4, 0, 4, 0);
             usernameTitleLabel.Name = "usernameTitleLabel";
-            usernameTitleLabel.Size = new Size(33, 15);
+            usernameTitleLabel.Size = new Size(51, 25);
             usernameTitleLabel.TabIndex = 5;
             usernameTitleLabel.Text = "User:";
             // 
@@ -114,9 +119,10 @@
             // 
             accessTitleLabel.AutoSize = true;
             accessTitleLabel.Enabled = false;
-            accessTitleLabel.Location = new Point(691, 47);
+            accessTitleLabel.Location = new Point(987, 78);
+            accessTitleLabel.Margin = new Padding(4, 0, 4, 0);
             accessTitleLabel.Name = "accessTitleLabel";
-            accessTitleLabel.Size = new Size(82, 15);
+            accessTitleLabel.Size = new Size(123, 25);
             accessTitleLabel.TabIndex = 6;
             accessTitleLabel.Text = "Authorization:";
             // 
@@ -124,44 +130,47 @@
             // 
             cpuBackgroudPanel.BackColor = Color.Gray;
             cpuBackgroudPanel.Controls.Add(cpuFillPanel);
-            cpuBackgroudPanel.Location = new Point(35, 37);
+            cpuBackgroudPanel.Location = new Point(50, 62);
+            cpuBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             cpuBackgroudPanel.Name = "cpuBackgroudPanel";
-            cpuBackgroudPanel.Size = new Size(160, 18);
+            cpuBackgroudPanel.Size = new Size(229, 30);
             cpuBackgroudPanel.TabIndex = 7;
             // 
             // cpuFillPanel
             // 
             cpuFillPanel.BackColor = Color.LimeGreen;
             cpuFillPanel.Location = new Point(0, 0);
+            cpuFillPanel.Margin = new Padding(4, 5, 4, 5);
             cpuFillPanel.Name = "cpuFillPanel";
-            cpuFillPanel.Size = new Size(80, 18);
+            cpuFillPanel.Size = new Size(114, 30);
             cpuFillPanel.TabIndex = 9;
             // 
             // ramBackgroudPanel
             // 
             ramBackgroudPanel.BackColor = Color.Gray;
             ramBackgroudPanel.Controls.Add(ramFillPanel);
-            ramBackgroudPanel.Location = new Point(35, 91);
+            ramBackgroudPanel.Location = new Point(50, 152);
+            ramBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             ramBackgroudPanel.Name = "ramBackgroudPanel";
-            ramBackgroudPanel.Size = new Size(160, 18);
+            ramBackgroudPanel.Size = new Size(229, 30);
             ramBackgroudPanel.TabIndex = 8;
             // 
             // ramFillPanel
             // 
             ramFillPanel.BackColor = Color.LimeGreen;
             ramFillPanel.Location = new Point(0, 0);
+            ramFillPanel.Margin = new Padding(4, 5, 4, 5);
             ramFillPanel.Name = "ramFillPanel";
-            ramFillPanel.Size = new Size(80, 18);
+            ramFillPanel.Size = new Size(114, 30);
             ramFillPanel.TabIndex = 10;
             // 
             // userAttentionButton
             // 
             userAttentionButton.BackColor = Color.IndianRed;
             userAttentionButton.FlatStyle = FlatStyle.Flat;
-            userAttentionButton.Location = new Point(304, 338);
-            userAttentionButton.Margin = new Padding(2);
+            userAttentionButton.Location = new Point(434, 563);
             userAttentionButton.Name = "userAttentionButton";
-            userAttentionButton.Size = new Size(247, 66);
+            userAttentionButton.Size = new Size(353, 110);
             userAttentionButton.TabIndex = 9;
             userAttentionButton.UseVisualStyleBackColor = false;
             userAttentionButton.Click += userAttentionButton_Click;
@@ -176,10 +185,9 @@
             // 
             engineStartButton.BackgroundImage = (Image)resources.GetObject("engineStartButton.BackgroundImage");
             engineStartButton.BackgroundImageLayout = ImageLayout.Stretch;
-            engineStartButton.Location = new Point(735, 209);
-            engineStartButton.Margin = new Padding(2);
+            engineStartButton.Location = new Point(1050, 348);
             engineStartButton.Name = "engineStartButton";
-            engineStartButton.Size = new Size(70, 70);
+            engineStartButton.Size = new Size(100, 100);
             engineStartButton.TabIndex = 12;
             engineStartButton.UseVisualStyleBackColor = true;
             engineStartButton.Click += engineStartButton_Click;
@@ -188,9 +196,10 @@
             // 
             resetButton.BackgroundImage = (Image)resources.GetObject("resetButton.BackgroundImage");
             resetButton.BackgroundImageLayout = ImageLayout.Stretch;
-            resetButton.Location = new Point(632, 308);
+            resetButton.Location = new Point(903, 513);
+            resetButton.Margin = new Padding(4, 5, 4, 5);
             resetButton.Name = "resetButton";
-            resetButton.Size = new Size(70, 70);
+            resetButton.Size = new Size(100, 100);
             resetButton.TabIndex = 13;
             resetButton.UseVisualStyleBackColor = true;
             resetButton.Click += resetButton_Click;
@@ -199,9 +208,10 @@
             // 
             eStopButton.BackgroundImage = (Image)resources.GetObject("eStopButton.BackgroundImage");
             eStopButton.BackgroundImageLayout = ImageLayout.Stretch;
-            eStopButton.Location = new Point(735, 308);
+            eStopButton.Location = new Point(1050, 513);
+            eStopButton.Margin = new Padding(4, 5, 4, 5);
             eStopButton.Name = "eStopButton";
-            eStopButton.Size = new Size(70, 70);
+            eStopButton.Size = new Size(100, 100);
             eStopButton.TabIndex = 14;
             eStopButton.UseVisualStyleBackColor = true;
             eStopButton.Click += eStopButton_Click;
@@ -209,19 +219,19 @@
             // processPanel
             // 
             processPanel.BackColor = Color.Silver;
-            processPanel.Location = new Point(304, 157);
+            processPanel.Location = new Point(434, 262);
+            processPanel.Margin = new Padding(4, 5, 4, 5);
             processPanel.Name = "processPanel";
-            processPanel.Size = new Size(247, 100);
+            processPanel.Size = new Size(353, 167);
             processPanel.TabIndex = 15;
             // 
             // engineStopButton
             // 
             engineStopButton.BackgroundImage = (Image)resources.GetObject("engineStopButton.BackgroundImage");
             engineStopButton.BackgroundImageLayout = ImageLayout.Stretch;
-            engineStopButton.Location = new Point(632, 209);
-            engineStopButton.Margin = new Padding(2);
+            engineStopButton.Location = new Point(903, 348);
             engineStopButton.Name = "engineStopButton";
-            engineStopButton.Size = new Size(70, 70);
+            engineStopButton.Size = new Size(100, 100);
             engineStopButton.TabIndex = 16;
             engineStopButton.UseVisualStyleBackColor = true;
             engineStopButton.Click += engineStopButton_Click;
@@ -229,44 +239,92 @@
             // engineStopLabel
             // 
             engineStopLabel.AutoSize = true;
-            engineStopLabel.Location = new Point(632, 192);
+            engineStopLabel.Location = new Point(903, 320);
+            engineStopLabel.Margin = new Padding(4, 0, 4, 0);
             engineStopLabel.Name = "engineStopLabel";
-            engineStopLabel.Size = new Size(70, 15);
+            engineStopLabel.Size = new Size(107, 25);
             engineStopLabel.TabIndex = 17;
             engineStopLabel.Text = "Engine Stop";
             // 
             // engineStartLabel
             // 
             engineStartLabel.AutoSize = true;
-            engineStartLabel.Location = new Point(735, 192);
+            engineStartLabel.Location = new Point(1050, 320);
+            engineStartLabel.Margin = new Padding(4, 0, 4, 0);
             engineStartLabel.Name = "engineStartLabel";
-            engineStartLabel.Size = new Size(70, 15);
+            engineStartLabel.Size = new Size(106, 25);
             engineStartLabel.TabIndex = 18;
             engineStartLabel.Text = "Engine Start";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(648, 290);
+            label3.Location = new Point(926, 483);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(39, 15);
+            label3.Size = new Size(60, 25);
             label3.TabIndex = 19;
             label3.Text = "RESET";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(747, 290);
+            label4.Location = new Point(1067, 483);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(46, 15);
+            label4.Size = new Size(70, 25);
             label4.TabIndex = 20;
             label4.Text = "E-STOP";
             // 
+            // segmentTempLabel
+            // 
+            segmentTempLabel.BackColor = SystemColors.ActiveCaptionText;
+            segmentTempLabel.BorderStyle = BorderStyle.Fixed3D;
+            segmentTempLabel.Font = new Font("Source Han Sans JP", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            segmentTempLabel.ForeColor = Color.LightGreen;
+            segmentTempLabel.Location = new Point(50, 320);
+            segmentTempLabel.Name = "segmentTempLabel";
+            segmentTempLabel.Padding = new Padding(5);
+            segmentTempLabel.Size = new Size(287, 157);
+            segmentTempLabel.TabIndex = 21;
+            segmentTempLabel.Text = "60°";
+            segmentTempLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // engineTimer
+            // 
+            engineTimer.Enabled = true;
+            engineTimer.Interval = 250;
+            engineTimer.Tick += engineTimer_Tick;
+            // 
+            // coolingLabel
+            // 
+            coolingLabel.AutoSize = true;
+            coolingLabel.Location = new Point(133, 495);
+            coolingLabel.Margin = new Padding(4, 0, 4, 0);
+            coolingLabel.Name = "coolingLabel";
+            coolingLabel.Size = new Size(106, 25);
+            coolingLabel.TabIndex = 23;
+            coolingLabel.Text = "Cooling Fan";
+            // 
+            // coolingButton
+            // 
+            coolingButton.BackgroundImage = (Image)resources.GetObject("coolingButton.BackgroundImage");
+            coolingButton.BackgroundImageLayout = ImageLayout.Stretch;
+            coolingButton.Location = new Point(133, 523);
+            coolingButton.Name = "coolingButton";
+            coolingButton.Size = new Size(100, 100);
+            coolingButton.TabIndex = 22;
+            coolingButton.UseVisualStyleBackColor = true;
+            coolingButton.Click += coolingButton_Click;
+            // 
             // mainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(870, 434);
+            ClientSize = new Size(1243, 723);
+            Controls.Add(coolingLabel);
+            Controls.Add(coolingButton);
+            Controls.Add(segmentTempLabel);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(engineStartLabel);
@@ -285,9 +343,8 @@
             Controls.Add(usernameLabel);
             Controls.Add(ramUsageLabel);
             Controls.Add(cpuUsageLabel);
-            Margin = new Padding(2);
             Name = "mainForm";
-            Text = "Production Line Symulation";
+            Text = "2";
             Load += mainForm_Load;
             cpuBackgroudPanel.ResumeLayout(false);
             ramBackgroudPanel.ResumeLayout(false);
@@ -318,5 +375,9 @@
         private Label engineStartLabel;
         private Label label3;
         private Label label4;
+        private Label segmentTempLabel;
+        private System.Windows.Forms.Timer engineTimer;
+        private Label coolingLabel;
+        private Button coolingButton;
     }
 }
