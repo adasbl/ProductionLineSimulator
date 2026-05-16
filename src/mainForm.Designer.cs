@@ -358,6 +358,8 @@
             // addUserButton
             // 
             addUserButton.AccessibleDescription = "";
+            addUserButton.BackgroundImage = (Image)resources.GetObject("addUserButton.BackgroundImage");
+            addUserButton.BackgroundImageLayout = ImageLayout.Stretch;
             addUserButton.Location = new Point(1040, 32);
             addUserButton.Name = "addUserButton";
             addUserButton.Size = new Size(60, 60);
@@ -366,6 +368,8 @@
             // 
             // modifuUsersButton
             // 
+            modifuUsersButton.BackgroundImage = (Image)resources.GetObject("modifuUsersButton.BackgroundImage");
+            modifuUsersButton.BackgroundImageLayout = ImageLayout.Stretch;
             modifuUsersButton.Location = new Point(1129, 32);
             modifuUsersButton.Name = "modifuUsersButton";
             modifuUsersButton.Size = new Size(60, 60);
