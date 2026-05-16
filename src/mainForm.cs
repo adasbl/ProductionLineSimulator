@@ -76,6 +76,7 @@ namespace productionLine
                 {
                     engineShutdownCounter -= 1;
                     userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
+                    userAttentionButton.ForeColor = Color.IndianRed;
                     if (engineShutdownCounter <= 0)
                     {
                         machineStop();
@@ -109,6 +110,10 @@ namespace productionLine
                 }
             }
             segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
+
+            if (engineTemperature > 85.0) segmentTempLabel.ForeColor = Color.Red;
+            else if (engineTemperature < 60.0 && engineOn) segmentTempLabel.ForeColor = Color.Blue;
+            else segmentTempLabel.ForeColor = Color.LimeGreen;
         }
 
         private void userAttentionButton_Click(object sender, EventArgs e)
@@ -133,7 +138,7 @@ namespace productionLine
             {
                 engineOn = false;
                 engineStateLabel.Text = "Engine: OFF";
-                processPanel.BackColor = Color.Silver;
+                processPanel.BackColor = Color.DarkGray;
                 userAttentionButton.Enabled = false;
                 userAttentionButton.Text = "Engine off";
                 resetTimers();

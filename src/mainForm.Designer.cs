@@ -172,7 +172,7 @@
             // 
             // userAttentionButton
             // 
-            userAttentionButton.BackColor = Color.IndianRed;
+            userAttentionButton.BackColor = Color.Gainsboro;
             userAttentionButton.FlatStyle = FlatStyle.Flat;
             userAttentionButton.Location = new Point(434, 563);
             userAttentionButton.Name = "userAttentionButton";
@@ -224,7 +224,7 @@
             // 
             // processPanel
             // 
-            processPanel.BackColor = Color.Silver;
+            processPanel.BackColor = Color.DarkGray;
             processPanel.Controls.Add(engineStateLabel);
             processPanel.Controls.Add(fanInfoLabel);
             processPanel.Controls.Add(tempInfoLabel);
@@ -317,7 +317,7 @@
             segmentTempLabel.BackColor = SystemColors.ActiveCaptionText;
             segmentTempLabel.BorderStyle = BorderStyle.Fixed3D;
             segmentTempLabel.Font = new Font("Source Han Sans JP", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            segmentTempLabel.ForeColor = Color.LightGreen;
+            segmentTempLabel.ForeColor = Color.Ivory;
             segmentTempLabel.Location = new Point(50, 320);
             segmentTempLabel.Name = "segmentTempLabel";
             segmentTempLabel.Padding = new Padding(5);
