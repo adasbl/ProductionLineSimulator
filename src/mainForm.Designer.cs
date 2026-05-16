@@ -56,8 +56,12 @@
             engineTimer = new System.Windows.Forms.Timer(components);
             coolingLabel = new Label();
             coolingButton = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            infoLabel = new Label();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
+            processPanel.SuspendLayout();
             SuspendLayout();
             // 
             // parametersTimer
@@ -89,7 +93,7 @@
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(1111, 32);
+            usernameLabel.Location = new Point(930, 32);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(73, 25);
             usernameLabel.TabIndex = 3;
@@ -98,7 +102,7 @@
             // accessLabel
             // 
             accessLabel.AutoSize = true;
-            accessLabel.Location = new Point(1111, 78);
+            accessLabel.Location = new Point(930, 78);
             accessLabel.Name = "accessLabel";
             accessLabel.Size = new Size(73, 25);
             accessLabel.TabIndex = 4;
@@ -108,7 +112,7 @@
             // 
             usernameTitleLabel.AutoSize = true;
             usernameTitleLabel.Enabled = false;
-            usernameTitleLabel.Location = new Point(1050, 32);
+            usernameTitleLabel.Location = new Point(869, 32);
             usernameTitleLabel.Margin = new Padding(4, 0, 4, 0);
             usernameTitleLabel.Name = "usernameTitleLabel";
             usernameTitleLabel.Size = new Size(51, 25);
@@ -119,7 +123,7 @@
             // 
             accessTitleLabel.AutoSize = true;
             accessTitleLabel.Enabled = false;
-            accessTitleLabel.Location = new Point(987, 78);
+            accessTitleLabel.Location = new Point(806, 78);
             accessTitleLabel.Margin = new Padding(4, 0, 4, 0);
             accessTitleLabel.Name = "accessTitleLabel";
             accessTitleLabel.Size = new Size(123, 25);
@@ -219,6 +223,7 @@
             // processPanel
             // 
             processPanel.BackColor = Color.Silver;
+            processPanel.Controls.Add(infoLabel);
             processPanel.Location = new Point(434, 262);
             processPanel.Margin = new Padding(4, 5, 4, 5);
             processPanel.Name = "processPanel";
@@ -317,11 +322,40 @@
             coolingButton.UseVisualStyleBackColor = true;
             coolingButton.Click += coolingButton_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1040, 32);
+            button1.Name = "button1";
+            button1.Size = new Size(60, 60);
+            button1.TabIndex = 24;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(1129, 32);
+            button2.Name = "button2";
+            button2.Size = new Size(60, 60);
+            button2.TabIndex = 25;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // infoLabel
+            // 
+            infoLabel.AutoSize = true;
+            infoLabel.Location = new Point(50, 72);
+            infoLabel.Name = "infoLabel";
+            infoLabel.Size = new Size(127, 25);
+            infoLabel.TabIndex = 0;
+            infoLabel.Text = "no engine info";
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1243, 723);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(coolingLabel);
             Controls.Add(coolingButton);
             Controls.Add(segmentTempLabel);
@@ -348,6 +382,8 @@
             Load += mainForm_Load;
             cpuBackgroudPanel.ResumeLayout(false);
             ramBackgroudPanel.ResumeLayout(false);
+            processPanel.ResumeLayout(false);
+            processPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -379,5 +415,8 @@
         private System.Windows.Forms.Timer engineTimer;
         private Label coolingLabel;
         private Button coolingButton;
+        private Button button1;
+        private Button button2;
+        private Label infoLabel;
     }
 }

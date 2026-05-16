@@ -14,9 +14,11 @@ namespace productionLine
         private bool engineOn = false;
         private bool resetState = false;
         private bool stopState = false;
+        private bool fanState = false;
         private int attentionCounter = 31;
         private int engineShutdownCounter = 11;
-        private int engineTemerature = 30;
+        private double engineTemperature = 30.0;
+        private Random randomGenerator = new Random();
 
         public mainForm()
         {
@@ -84,14 +86,29 @@ namespace productionLine
 
         private void engineTimer_Tick(object sender, EventArgs e)
         {
-            if (engineOn == true)
+            if (engineOn)
             {
-                segmentTempLabel.Text = $"{engineTemerature}°";
+                if (engineTemperature < 90.0)
+                {
+                    engineTemperature += randomGenerator.NextDouble() * 3.0;
+                }
+                else
+                {
+                    engineTemperature += (randomGenerator.NextDouble() * 2.0) - 1.0;
+                }
             }
             else
             {
-                segmentTempLabel.Text = "---";
+                if (engineTemperature > 20.0)
+                {
+                    engineTemperature -= randomGenerator.NextDouble() * 1.5;
+                }
+                else
+                {
+                    engineTemperature = 20.0;
+                }
             }
+            segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
         }
 
         private void userAttentionButton_Click(object sender, EventArgs e)
@@ -157,17 +174,23 @@ namespace productionLine
             processPanel.BackColor = Color.Silver;
         }
 
+        private void coolingButton_Click(object sender, EventArgs e)
+        {
+            if (fanState == true)
+            {
+                coolingButton.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                coolingButton.BackColor = Color.GreenYellow;
+            }
+            fanState = !fanState;
+        }
+
         private void resetTimers()
         {
             attentionCounter = 31;
             engineShutdownCounter = 11;
         }
-
-        private void coolingButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }
