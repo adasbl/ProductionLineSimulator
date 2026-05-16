@@ -47,6 +47,9 @@
             resetButton = new Button();
             eStopButton = new Button();
             processPanel = new Panel();
+            engineStateLabel = new Label();
+            fanInfoLabel = new Label();
+            tempInfoLabel = new Label();
             engineStopButton = new Button();
             engineStopLabel = new Label();
             engineStartLabel = new Label();
@@ -56,9 +59,8 @@
             engineTimer = new System.Windows.Forms.Timer(components);
             coolingLabel = new Label();
             coolingButton = new Button();
-            button1 = new Button();
-            button2 = new Button();
-            infoLabel = new Label();
+            addUserButton = new Button();
+            modifuUsersButton = new Button();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             processPanel.SuspendLayout();
@@ -223,12 +225,41 @@
             // processPanel
             // 
             processPanel.BackColor = Color.Silver;
-            processPanel.Controls.Add(infoLabel);
+            processPanel.Controls.Add(engineStateLabel);
+            processPanel.Controls.Add(fanInfoLabel);
+            processPanel.Controls.Add(tempInfoLabel);
             processPanel.Location = new Point(434, 262);
             processPanel.Margin = new Padding(4, 5, 4, 5);
             processPanel.Name = "processPanel";
             processPanel.Size = new Size(353, 167);
             processPanel.TabIndex = 15;
+            // 
+            // engineStateLabel
+            // 
+            engineStateLabel.AutoSize = true;
+            engineStateLabel.Location = new Point(39, 20);
+            engineStateLabel.Name = "engineStateLabel";
+            engineStateLabel.Size = new Size(106, 25);
+            engineStateLabel.TabIndex = 2;
+            engineStateLabel.Text = "Engine: OFF";
+            // 
+            // fanInfoLabel
+            // 
+            fanInfoLabel.AutoSize = true;
+            fanInfoLabel.Location = new Point(39, 75);
+            fanInfoLabel.Name = "fanInfoLabel";
+            fanInfoLabel.Size = new Size(115, 25);
+            fanInfoLabel.TabIndex = 1;
+            fanInfoLabel.Text = "Cooling: OFF";
+            // 
+            // tempInfoLabel
+            // 
+            tempInfoLabel.AutoSize = true;
+            tempInfoLabel.Location = new Point(39, 124);
+            tempInfoLabel.Name = "tempInfoLabel";
+            tempInfoLabel.Size = new Size(193, 25);
+            tempInfoLabel.TabIndex = 0;
+            tempInfoLabel.Text = "Temperature: NORMAL";
             // 
             // engineStopButton
             // 
@@ -322,40 +353,30 @@
             coolingButton.UseVisualStyleBackColor = true;
             coolingButton.Click += coolingButton_Click;
             // 
-            // button1
+            // addUserButton
             // 
-            button1.Location = new Point(1040, 32);
-            button1.Name = "button1";
-            button1.Size = new Size(60, 60);
-            button1.TabIndex = 24;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            addUserButton.AccessibleDescription = "";
+            addUserButton.Location = new Point(1040, 32);
+            addUserButton.Name = "addUserButton";
+            addUserButton.Size = new Size(60, 60);
+            addUserButton.TabIndex = 24;
+            addUserButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // modifuUsersButton
             // 
-            button2.Location = new Point(1129, 32);
-            button2.Name = "button2";
-            button2.Size = new Size(60, 60);
-            button2.TabIndex = 25;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // infoLabel
-            // 
-            infoLabel.AutoSize = true;
-            infoLabel.Location = new Point(50, 72);
-            infoLabel.Name = "infoLabel";
-            infoLabel.Size = new Size(127, 25);
-            infoLabel.TabIndex = 0;
-            infoLabel.Text = "no engine info";
+            modifuUsersButton.Location = new Point(1129, 32);
+            modifuUsersButton.Name = "modifuUsersButton";
+            modifuUsersButton.Size = new Size(60, 60);
+            modifuUsersButton.TabIndex = 25;
+            modifuUsersButton.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1243, 723);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(modifuUsersButton);
+            Controls.Add(addUserButton);
             Controls.Add(coolingLabel);
             Controls.Add(coolingButton);
             Controls.Add(segmentTempLabel);
@@ -378,7 +399,7 @@
             Controls.Add(ramUsageLabel);
             Controls.Add(cpuUsageLabel);
             Name = "mainForm";
-            Text = "2";
+            Text = "Production Console Simulator";
             Load += mainForm_Load;
             cpuBackgroudPanel.ResumeLayout(false);
             ramBackgroudPanel.ResumeLayout(false);
@@ -415,8 +436,10 @@
         private System.Windows.Forms.Timer engineTimer;
         private Label coolingLabel;
         private Button coolingButton;
-        private Button button1;
-        private Button button2;
-        private Label infoLabel;
+        private Button addUserButton;
+        private Button modifuUsersButton;
+        private Label tempInfoLabel;
+        private Label engineStateLabel;
+        private Label fanInfoLabel;
     }
 }

@@ -121,7 +121,8 @@ namespace productionLine
             if (resetState == false && stopState == false)
             {
                 engineOn = true;
-                processPanel.BackColor = Color.GreenYellow;
+                engineStateLabel.Text = "Engine: WORKING";
+                processPanel.BackColor = Color.Honeydew;
                 userAttentionButton.Enabled = true;
                 resetTimers();
             }
@@ -131,9 +132,10 @@ namespace productionLine
             if (engineOn == true)
             {
                 engineOn = false;
+                engineStateLabel.Text = "Engine: OFF";
                 processPanel.BackColor = Color.Silver;
                 userAttentionButton.Enabled = false;
-                userAttentionButton.Text = "ENGINE OFF";
+                userAttentionButton.Text = "Engine off";
                 resetTimers();
             }
         }
@@ -166,6 +168,7 @@ namespace productionLine
         private void machineStop()
         {
             engineOn = false;
+            engineStateLabel.Text = "Engine: OFF";
             resetState = true;
             resetButton.BackColor = Color.Red;
             resetTimers();
@@ -179,10 +182,12 @@ namespace productionLine
             if (fanState == true)
             {
                 coolingButton.BackColor = SystemColors.Control;
+                fanInfoLabel.Text = "Cooling: OFF";
             }
             else
             {
                 coolingButton.BackColor = Color.GreenYellow;
+                fanInfoLabel.Text = "Cooling: ON";
             }
             fanState = !fanState;
         }
