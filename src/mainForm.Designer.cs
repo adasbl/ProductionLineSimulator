@@ -61,6 +61,7 @@
             coolingButton = new Button();
             addUserButton = new Button();
             modifuUsersButton = new Button();
+            timerLabel = new Label();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             processPanel.SuspendLayout();
@@ -225,6 +226,7 @@
             // processPanel
             // 
             processPanel.BackColor = Color.DarkGray;
+            processPanel.BorderStyle = BorderStyle.Fixed3D;
             processPanel.Controls.Add(engineStateLabel);
             processPanel.Controls.Add(fanInfoLabel);
             processPanel.Controls.Add(tempInfoLabel);
@@ -370,11 +372,24 @@
             modifuUsersButton.TabIndex = 25;
             modifuUsersButton.UseVisualStyleBackColor = true;
             // 
+            // timerLabel
+            // 
+            timerLabel.AutoSize = true;
+            timerLabel.BackColor = Color.White;
+            timerLabel.BorderStyle = BorderStyle.Fixed3D;
+            timerLabel.Location = new Point(589, 513);
+            timerLabel.Name = "timerLabel";
+            timerLabel.Size = new Size(28, 27);
+            timerLabel.TabIndex = 26;
+            timerLabel.Text = "--";
+            timerLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1243, 723);
+            Controls.Add(timerLabel);
             Controls.Add(modifuUsersButton);
             Controls.Add(addUserButton);
             Controls.Add(coolingLabel);
@@ -441,5 +456,6 @@
         private Label tempInfoLabel;
         private Label engineStateLabel;
         private Label fanInfoLabel;
+        private Label timerLabel;
     }
 }

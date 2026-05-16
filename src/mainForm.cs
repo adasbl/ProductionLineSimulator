@@ -17,6 +17,7 @@ namespace productionLine
         private bool fanState = false;
         private int attentionCounter = 31;
         private int engineShutdownCounter = 11;
+        private int tempWarningCounter = 10;
         private double engineTemperature = 30.0;
         private Random randomGenerator = new Random();
 
@@ -70,12 +71,13 @@ namespace productionLine
                 attentionCounter -= 1;
                 if (attentionCounter >= 0)
                 {
-                    userAttentionButton.Text = $"{attentionCounter}";
+                    timerLabel.Text = $"{attentionCounter}";
                 }
                 else if (attentionCounter < 0)
                 {
                     engineShutdownCounter -= 1;
                     userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
+                    timerLabel.Text = $"{engineShutdownCounter}";
                     userAttentionButton.ForeColor = Color.IndianRed;
                     if (engineShutdownCounter <= 0)
                     {
@@ -89,31 +91,69 @@ namespace productionLine
         {
             if (engineOn)
             {
-                if (engineTemperature < 90.0)
+                if (fanState)
                 {
-                    engineTemperature += randomGenerator.NextDouble() * 3.0;
+                    engineTemperature -= randomGenerator.NextDouble() * 4.0 + 1.0;
                 }
                 else
                 {
-                    engineTemperature += (randomGenerator.NextDouble() * 2.0) - 1.0;
+                    engineTemperature += randomGenerator.NextDouble() * 4.0 + 1.0;
                 }
             }
             else
             {
-                if (engineTemperature > 20.0)
+                if (fanState)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 1.5;
+                    engineTemperature -= randomGenerator.NextDouble() * 3.0 + 2.0;
                 }
                 else
                 {
-                    engineTemperature = 20.0;
+                    engineTemperature -= randomGenerator.NextDouble() * 1.5;
                 }
             }
-            segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
 
-            if (engineTemperature > 85.0) segmentTempLabel.ForeColor = Color.Red;
-            else if (engineTemperature < 60.0 && engineOn) segmentTempLabel.ForeColor = Color.Blue;
-            else segmentTempLabel.ForeColor = Color.LimeGreen;
+            if (engineTemperature < 20.0) engineTemperature = 20.0;
+
+            if (engineOn)
+            {
+                // Sprawdzamy, czy temperatura weszła w strefę krytyczną (Przegrzanie > 95, Wychłodzenie < 45)
+                if (engineTemperature >= 95.0 || engineTemperature <= 45.0)
+                {
+                    tempWarningCounter--; // Zdejmujemy 1 sekundę z licznika ostrzeżenia
+
+                    // Pokazujemy na wyświetlaczu czas do wybuchu/zatarcia
+                    segmentTempLabel.Text = $"ERR {tempWarningCounter}s";
+
+                    // Efekt mrugania na czerwono, żeby zwrócić uwagę operatora
+                    segmentTempLabel.ForeColor = tempWarningCounter % 2 == 0 ? Color.Red : Color.Yellow;
+
+                    // Jeśli operator nie zdążył (timer spadł do 0)
+                    if (tempWarningCounter <= 0)
+                    {
+                        machineStop();
+                        MessageBox.Show("AWARYJNE ZATRZYMANIE LINII!\n\nZignorowano ostrzeżenie o krytycznej temperaturze silnika.", "Błąd krytyczny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        // Ustawiamy temperaturę na "bezpieczną", żeby maszyna nie weszła od razu w błąd po resecie
+                        if (engineTemperature >= 95.0) engineTemperature = 85.0;
+                        if (engineTemperature <= 45.0) engineTemperature = 55.0;
+                    }
+                }
+                else
+                {
+                    tempWarningCounter = 10;
+
+                    segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
+
+                    if (engineTemperature > 85.0) segmentTempLabel.ForeColor = Color.Orange;
+                    else if (engineTemperature < 55.0) segmentTempLabel.ForeColor = Color.DeepSkyBlue;
+                    else segmentTempLabel.ForeColor = Color.LimeGreen;
+                }
+            }
+            else
+            {
+                segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
+                segmentTempLabel.ForeColor = Color.Gray;
+            }
         }
 
         private void userAttentionButton_Click(object sender, EventArgs e)
@@ -179,6 +219,7 @@ namespace productionLine
             resetTimers();
             userAttentionButton.Enabled = false;
             userAttentionButton.Text = string.Empty;
+            timerLabel.Text = "--";
             processPanel.BackColor = Color.Silver;
         }
 
@@ -201,6 +242,7 @@ namespace productionLine
         {
             attentionCounter = 31;
             engineShutdownCounter = 11;
+            tempWarningCounter = 10;
         }
     }
 }
