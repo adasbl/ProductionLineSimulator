@@ -63,6 +63,11 @@
             modifuUsersButton = new Button();
             timerLabel = new Label();
             engineControlTimer = new System.Windows.Forms.Timer(components);
+            clockLabel = new Label();
+            clockTimer = new System.Windows.Forms.Timer(components);
+            clockTitleLabel = new Label();
+            dateTitleLabel = new Label();
+            dateLabel = new Label();
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             processPanel.SuspendLayout();
@@ -77,7 +82,7 @@
             // cpuUsageLabel
             // 
             cpuUsageLabel.AutoSize = true;
-            cpuUsageLabel.Location = new Point(47, 32);
+            cpuUsageLabel.Location = new Point(72, 50);
             cpuUsageLabel.Margin = new Padding(4, 0, 4, 0);
             cpuUsageLabel.Name = "cpuUsageLabel";
             cpuUsageLabel.Size = new Size(159, 25);
@@ -87,7 +92,7 @@
             // ramUsageLabel
             // 
             ramUsageLabel.AutoSize = true;
-            ramUsageLabel.Location = new Point(47, 122);
+            ramUsageLabel.Location = new Point(72, 140);
             ramUsageLabel.Margin = new Padding(4, 0, 4, 0);
             ramUsageLabel.Name = "ramUsageLabel";
             ramUsageLabel.Size = new Size(169, 25);
@@ -97,7 +102,7 @@
             // usernameLabel
             // 
             usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(930, 32);
+            usernameLabel.Location = new Point(886, 32);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(73, 25);
             usernameLabel.TabIndex = 3;
@@ -106,7 +111,7 @@
             // accessLabel
             // 
             accessLabel.AutoSize = true;
-            accessLabel.Location = new Point(930, 78);
+            accessLabel.Location = new Point(886, 78);
             accessLabel.Name = "accessLabel";
             accessLabel.Size = new Size(73, 25);
             accessLabel.TabIndex = 4;
@@ -116,7 +121,7 @@
             // 
             usernameTitleLabel.AutoSize = true;
             usernameTitleLabel.Enabled = false;
-            usernameTitleLabel.Location = new Point(869, 32);
+            usernameTitleLabel.Location = new Point(825, 32);
             usernameTitleLabel.Margin = new Padding(4, 0, 4, 0);
             usernameTitleLabel.Name = "usernameTitleLabel";
             usernameTitleLabel.Size = new Size(51, 25);
@@ -127,7 +132,7 @@
             // 
             accessTitleLabel.AutoSize = true;
             accessTitleLabel.Enabled = false;
-            accessTitleLabel.Location = new Point(806, 78);
+            accessTitleLabel.Location = new Point(762, 78);
             accessTitleLabel.Margin = new Padding(4, 0, 4, 0);
             accessTitleLabel.Name = "accessTitleLabel";
             accessTitleLabel.Size = new Size(123, 25);
@@ -138,7 +143,7 @@
             // 
             cpuBackgroudPanel.BackColor = Color.Gray;
             cpuBackgroudPanel.Controls.Add(cpuFillPanel);
-            cpuBackgroudPanel.Location = new Point(50, 62);
+            cpuBackgroudPanel.Location = new Point(75, 80);
             cpuBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             cpuBackgroudPanel.Name = "cpuBackgroudPanel";
             cpuBackgroudPanel.Size = new Size(229, 30);
@@ -157,7 +162,7 @@
             // 
             ramBackgroudPanel.BackColor = Color.Gray;
             ramBackgroudPanel.Controls.Add(ramFillPanel);
-            ramBackgroudPanel.Location = new Point(50, 152);
+            ramBackgroudPanel.Location = new Point(75, 170);
             ramBackgroudPanel.Margin = new Padding(4, 5, 4, 5);
             ramBackgroudPanel.Name = "ramBackgroudPanel";
             ramBackgroudPanel.Size = new Size(229, 30);
@@ -176,7 +181,7 @@
             // 
             userAttentionButton.BackColor = Color.Gainsboro;
             userAttentionButton.FlatStyle = FlatStyle.Flat;
-            userAttentionButton.Location = new Point(434, 563);
+            userAttentionButton.Location = new Point(449, 513);
             userAttentionButton.Name = "userAttentionButton";
             userAttentionButton.Size = new Size(353, 110);
             userAttentionButton.TabIndex = 9;
@@ -193,7 +198,7 @@
             // 
             engineStartButton.BackgroundImage = (Image)resources.GetObject("engineStartButton.BackgroundImage");
             engineStartButton.BackgroundImageLayout = ImageLayout.Stretch;
-            engineStartButton.Location = new Point(1050, 348);
+            engineStartButton.Location = new Point(1060, 256);
             engineStartButton.Name = "engineStartButton";
             engineStartButton.Size = new Size(100, 100);
             engineStartButton.TabIndex = 12;
@@ -204,7 +209,7 @@
             // 
             resetButton.BackgroundImage = (Image)resources.GetObject("resetButton.BackgroundImage");
             resetButton.BackgroundImageLayout = ImageLayout.Stretch;
-            resetButton.Location = new Point(903, 513);
+            resetButton.Location = new Point(913, 421);
             resetButton.Margin = new Padding(4, 5, 4, 5);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(100, 100);
@@ -216,7 +221,7 @@
             // 
             eStopButton.BackgroundImage = (Image)resources.GetObject("eStopButton.BackgroundImage");
             eStopButton.BackgroundImageLayout = ImageLayout.Stretch;
-            eStopButton.Location = new Point(1050, 513);
+            eStopButton.Location = new Point(1060, 421);
             eStopButton.Margin = new Padding(4, 5, 4, 5);
             eStopButton.Name = "eStopButton";
             eStopButton.Size = new Size(100, 100);
@@ -231,7 +236,7 @@
             processPanel.Controls.Add(engineStateLabel);
             processPanel.Controls.Add(fanInfoLabel);
             processPanel.Controls.Add(tempInfoLabel);
-            processPanel.Location = new Point(434, 262);
+            processPanel.Location = new Point(449, 212);
             processPanel.Margin = new Padding(4, 5, 4, 5);
             processPanel.Name = "processPanel";
             processPanel.Size = new Size(353, 167);
@@ -240,7 +245,7 @@
             // engineStateLabel
             // 
             engineStateLabel.AutoSize = true;
-            engineStateLabel.Location = new Point(39, 20);
+            engineStateLabel.Location = new Point(39, 19);
             engineStateLabel.Name = "engineStateLabel";
             engineStateLabel.Size = new Size(106, 25);
             engineStateLabel.TabIndex = 2;
@@ -249,7 +254,7 @@
             // fanInfoLabel
             // 
             fanInfoLabel.AutoSize = true;
-            fanInfoLabel.Location = new Point(39, 75);
+            fanInfoLabel.Location = new Point(39, 70);
             fanInfoLabel.Name = "fanInfoLabel";
             fanInfoLabel.Size = new Size(115, 25);
             fanInfoLabel.TabIndex = 1;
@@ -258,7 +263,7 @@
             // tempInfoLabel
             // 
             tempInfoLabel.AutoSize = true;
-            tempInfoLabel.Location = new Point(39, 124);
+            tempInfoLabel.Location = new Point(39, 117);
             tempInfoLabel.Name = "tempInfoLabel";
             tempInfoLabel.Size = new Size(193, 25);
             tempInfoLabel.TabIndex = 0;
@@ -268,7 +273,7 @@
             // 
             engineStopButton.BackgroundImage = (Image)resources.GetObject("engineStopButton.BackgroundImage");
             engineStopButton.BackgroundImageLayout = ImageLayout.Stretch;
-            engineStopButton.Location = new Point(903, 348);
+            engineStopButton.Location = new Point(913, 256);
             engineStopButton.Name = "engineStopButton";
             engineStopButton.Size = new Size(100, 100);
             engineStopButton.TabIndex = 16;
@@ -278,7 +283,7 @@
             // engineStopLabel
             // 
             engineStopLabel.AutoSize = true;
-            engineStopLabel.Location = new Point(903, 320);
+            engineStopLabel.Location = new Point(913, 228);
             engineStopLabel.Margin = new Padding(4, 0, 4, 0);
             engineStopLabel.Name = "engineStopLabel";
             engineStopLabel.Size = new Size(107, 25);
@@ -288,7 +293,7 @@
             // engineStartLabel
             // 
             engineStartLabel.AutoSize = true;
-            engineStartLabel.Location = new Point(1050, 320);
+            engineStartLabel.Location = new Point(1060, 228);
             engineStartLabel.Margin = new Padding(4, 0, 4, 0);
             engineStartLabel.Name = "engineStartLabel";
             engineStartLabel.Size = new Size(106, 25);
@@ -298,7 +303,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(926, 483);
+            label3.Location = new Point(936, 391);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(60, 25);
@@ -308,7 +313,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1067, 483);
+            label4.Location = new Point(1077, 391);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(70, 25);
@@ -321,7 +326,7 @@
             segmentTempLabel.BorderStyle = BorderStyle.Fixed3D;
             segmentTempLabel.Font = new Font("Source Han Sans JP", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             segmentTempLabel.ForeColor = Color.Ivory;
-            segmentTempLabel.Location = new Point(50, 320);
+            segmentTempLabel.Location = new Point(72, 270);
             segmentTempLabel.Name = "segmentTempLabel";
             segmentTempLabel.Padding = new Padding(5);
             segmentTempLabel.Size = new Size(287, 157);
@@ -338,7 +343,7 @@
             // coolingLabel
             // 
             coolingLabel.AutoSize = true;
-            coolingLabel.Location = new Point(133, 495);
+            coolingLabel.Location = new Point(155, 464);
             coolingLabel.Margin = new Padding(4, 0, 4, 0);
             coolingLabel.Name = "coolingLabel";
             coolingLabel.Size = new Size(106, 25);
@@ -349,7 +354,7 @@
             // 
             coolingButton.BackgroundImage = (Image)resources.GetObject("coolingButton.BackgroundImage");
             coolingButton.BackgroundImageLayout = ImageLayout.Stretch;
-            coolingButton.Location = new Point(133, 523);
+            coolingButton.Location = new Point(155, 492);
             coolingButton.Name = "coolingButton";
             coolingButton.Size = new Size(100, 100);
             coolingButton.TabIndex = 22;
@@ -382,7 +387,7 @@
             timerLabel.AutoSize = true;
             timerLabel.BackColor = Color.White;
             timerLabel.BorderStyle = BorderStyle.Fixed3D;
-            timerLabel.Location = new Point(589, 513);
+            timerLabel.Location = new Point(604, 463);
             timerLabel.Name = "timerLabel";
             timerLabel.Size = new Size(28, 27);
             timerLabel.TabIndex = 26;
@@ -395,11 +400,59 @@
             engineControlTimer.Interval = 1000;
             engineControlTimer.Tick += engineControlTimer_Tick;
             // 
+            // clockLabel
+            // 
+            clockLabel.AutoSize = true;
+            clockLabel.Location = new Point(525, 32);
+            clockLabel.Name = "clockLabel";
+            clockLabel.Size = new Size(80, 25);
+            clockLabel.TabIndex = 27;
+            clockLabel.Text = "00:00:00";
+            // 
+            // clockTimer
+            // 
+            clockTimer.Enabled = true;
+            clockTimer.Interval = 1000;
+            clockTimer.Tick += clockTimer_Tick;
+            // 
+            // clockTitleLabel
+            // 
+            clockTitleLabel.AutoSize = true;
+            clockTitleLabel.Enabled = false;
+            clockTitleLabel.Location = new Point(449, 32);
+            clockTitleLabel.Name = "clockTitleLabel";
+            clockTitleLabel.Size = new Size(54, 25);
+            clockTitleLabel.TabIndex = 28;
+            clockTitleLabel.Text = "Time:";
+            // 
+            // dateTitleLabel
+            // 
+            dateTitleLabel.AutoSize = true;
+            dateTitleLabel.Enabled = false;
+            dateTitleLabel.Location = new Point(449, 78);
+            dateTitleLabel.Name = "dateTitleLabel";
+            dateTitleLabel.Size = new Size(53, 25);
+            dateTitleLabel.TabIndex = 29;
+            dateTitleLabel.Text = "Date:";
+            // 
+            // dateLabel
+            // 
+            dateLabel.AutoSize = true;
+            dateLabel.Location = new Point(525, 78);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(80, 25);
+            dateLabel.TabIndex = 30;
+            dateLabel.Text = "00:00:00";
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1243, 723);
+            ClientSize = new Size(1258, 664);
+            Controls.Add(dateLabel);
+            Controls.Add(dateTitleLabel);
+            Controls.Add(clockTitleLabel);
+            Controls.Add(clockLabel);
             Controls.Add(timerLabel);
             Controls.Add(modifuUsersButton);
             Controls.Add(addUserButton);
@@ -425,6 +478,7 @@
             Controls.Add(ramUsageLabel);
             Controls.Add(cpuUsageLabel);
             Name = "mainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Production Console Simulator";
             Load += mainForm_Load;
             cpuBackgroudPanel.ResumeLayout(false);
@@ -469,5 +523,10 @@
         private Label fanInfoLabel;
         private Label timerLabel;
         private System.Windows.Forms.Timer engineControlTimer;
+        private Label clockLabel;
+        private System.Windows.Forms.Timer clockTimer;
+        private Label clockTitleLabel;
+        private Label dateTitleLabel;
+        private Label dateLabel;
     }
 }

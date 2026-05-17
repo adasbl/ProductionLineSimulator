@@ -89,37 +89,76 @@ namespace productionLine
 
         private void engineTempTimer_Tick(object sender, EventArgs e)
         {
-            if (engineOn == true)
+            // Ustalamy "optymalną" temperaturę pracy silnika (np. 85 stopni)
+            double targetWorkTemp = 85.0;
+
+            // Szum losowy (niewielki, żeby temperatura tylko lekko drżała, np. max 0.4 stopnia)
+            double randomNoise = (randomGenerator.NextDouble() * 0.4) - 0.2;
+
+            if (engineOn)
             {
-                if (fanState == true)
+                if (fanState) // SILNIK PRACUJE + WIATRAK WŁĄCZONY (chłodzenie)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 2.0 + 1.0;
+                    // Temperatura spada, ale tym szybciej, im jest goręcej
+                    double coolingPower = (engineTemperature / 30.0); // Zmienna siła chłodzenia
+                    engineTemperature -= coolingPower + randomNoise;
                 }
-                else
+                else // SILNIK PRACUJE (nagrzewanie)
                 {
-                    engineTemperature += randomGenerator.NextDouble() * 2.0 + 1.0;
+                    if (engineTemperature < targetWorkTemp)
+                    {
+                        // Jesteśmy PONIŻEJ temperatury optymalnej -> nagrzewamy silnik.
+                        // Im bliżej 85 stopni, tym (targetWorkTemp - engineTemperature) jest mniejsze,
+                        // więc nagrzewanie naturalnie zwalnia!
+                        double heatingPower = (targetWorkTemp - engineTemperature) / 20.0;
+
+                        // Gwarantujemy minimalny przyrost, żeby nie ugrzązł na 84.9
+                        if (heatingPower < 0.2) heatingPower = 0.2;
+
+                        engineTemperature += heatingPower + randomNoise;
+                    }
+                    else
+                    {
+                        // Jesteśmy POWYŻEJ temperatury optymalnej (PRZEGRZEWANIE) -> temperatura znów gwałtownie rośnie.
+                        // Im wyższa temperatura, tym szybciej rośnie (efekt kuli śnieżnej)
+                        double overheatingPower = (engineTemperature - targetWorkTemp) / 15.0;
+
+                        if (overheatingPower < 0.2) overheatingPower = 0.2;
+
+                        engineTemperature += overheatingPower + randomNoise;
+                    }
                 }
             }
             else
             {
-                if (fanState == true)
+                // SILNIK WYŁĄCZONY (stygnięcie)
+                if (fanState) // Stygnięcie z wiatrakiem (bardzo szybkie)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 1.5 + 1.0;
+                    double coolingPower = (engineTemperature / 20.0);
+                    engineTemperature -= coolingPower + randomNoise;
                 }
-                else
+                else // Naturalne stygnięcie (powolne)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 1.0;
+                    // Zwalnia w miarę zbliżania się do temperatury pokojowej
+                    double coolingPower = (engineTemperature - 20.0) / 40.0;
+                    if (coolingPower < 0.05) coolingPower = 0.05; // żeby w końcu dotarł do tych 20
+
+                    engineTemperature -= coolingPower + randomNoise;
                 }
             }
 
+            // Blokada dolna - silnik nie zamarznie w hali
             if (engineTemperature < 20.0) engineTemperature = 20.0;
 
+            // Aktualizacja wyświetlacza 
             segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
 
+            // Ostateczne awaryjne zabezpieczenie przed pożarem (wybucha, niezależnie od licznika operatora)
             if (engineTemperature >= 140)
             {
                 machineStop();
-                MessageBox.Show("EMERGENCY STOP!\n\n Extreme temperature detected.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("EMERGENCY STOP!\n\nExtreme temperature detected. Engine failure.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                engineTemperature = 100.0; // Ustawiamy na 100 po restarcie, żeby od razu znowu nie wybuchł
             }
         }
         private void engineControlTimer_Tick(object sender, EventArgs e)
@@ -130,13 +169,12 @@ namespace productionLine
                 MessageBox.Show("EMERGENCY STOP!\n\nCritical engine temperature warning ignored.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
-            if (engineTemperature >= 95.0 )
+
+            if (engineTemperature >= 95.0)
             {
                 tempInfoLabel.Text = $"Temperature: TOO HIGH {tempWarningCounter}";
                 if (engineOn) tempWarningCounter--;
 
-                // segmentTempLabel.ForeColor = tempWarningCounter % 2 == 0 ? Color.Red : Color.Yellow;
                 segmentTempLabel.ForeColor = Color.Red;
 
             }
@@ -254,6 +292,13 @@ namespace productionLine
             attentionCounter = 30;
             engineShutdownCounter = 11;
             tempWarningCounter = 10;
+        }
+
+        private void clockTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime currentDateTime = DateTime.Now;
+            clockLabel.Text = currentDateTime.ToString("HH:mm:ss");
+            dateLabel.Text = currentDateTime.ToString("dd.MM.yyyy");
         }
     }
 }
