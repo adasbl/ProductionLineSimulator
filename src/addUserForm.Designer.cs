@@ -34,24 +34,27 @@
             passwordBox = new TextBox();
             usernameBox = new TextBox();
             label1 = new Label();
+            authorizationComboBox = new ComboBox();
+            authorizationLabel = new Label();
             SuspendLayout();
             // 
             // addUserButton
             // 
             addUserButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            addUserButton.Location = new Point(113, 167);
+            addUserButton.Location = new Point(113, 184);
             addUserButton.Margin = new Padding(2);
             addUserButton.Name = "addUserButton";
             addUserButton.Size = new Size(80, 26);
             addUserButton.TabIndex = 9;
             addUserButton.Text = "Finish";
             addUserButton.UseVisualStyleBackColor = true;
+            addUserButton.Click += addUserButton_Click;
             // 
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(188, 101);
+            passwordLabel.Location = new Point(188, 74);
             passwordLabel.Margin = new Padding(2, 0, 2, 0);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(62, 15);
@@ -63,7 +66,7 @@
             usernameLabel.AutoSize = true;
             usernameLabel.FlatStyle = FlatStyle.System;
             usernameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            usernameLabel.Location = new Point(188, 56);
+            usernameLabel.Location = new Point(188, 29);
             usernameLabel.Margin = new Padding(2, 0, 2, 0);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(67, 15);
@@ -72,7 +75,7 @@
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(164, 117);
+            passwordBox.Location = new Point(164, 90);
             passwordBox.Margin = new Padding(2);
             passwordBox.Name = "passwordBox";
             passwordBox.Size = new Size(121, 23);
@@ -80,7 +83,7 @@
             // 
             // usernameBox
             // 
-            usernameBox.Location = new Point(164, 73);
+            usernameBox.Location = new Point(164, 46);
             usernameBox.Margin = new Padding(2);
             usernameBox.Name = "usernameBox";
             usernameBox.Size = new Size(121, 23);
@@ -97,11 +100,32 @@
             label1.TabIndex = 10;
             label1.Text = "Add user:";
             // 
+            // authorizationComboBox
+            // 
+            authorizationComboBox.FormattingEnabled = true;
+            authorizationComboBox.Location = new Point(164, 137);
+            authorizationComboBox.Name = "authorizationComboBox";
+            authorizationComboBox.Size = new Size(121, 23);
+            authorizationComboBox.TabIndex = 11;
+            // 
+            // authorizationLabel
+            // 
+            authorizationLabel.AutoSize = true;
+            authorizationLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            authorizationLabel.Location = new Point(178, 119);
+            authorizationLabel.Margin = new Padding(2, 0, 2, 0);
+            authorizationLabel.Name = "authorizationLabel";
+            authorizationLabel.Size = new Size(86, 15);
+            authorizationLabel.TabIndex = 12;
+            authorizationLabel.Text = "Authorization:";
+            // 
             // addUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(330, 237);
+            Controls.Add(authorizationLabel);
+            Controls.Add(authorizationComboBox);
             Controls.Add(label1);
             Controls.Add(addUserButton);
             Controls.Add(passwordLabel);
@@ -126,5 +150,7 @@
         private TextBox passwordBox;
         private TextBox usernameBox;
         private Label label1;
+        private ComboBox authorizationComboBox;
+        private Label authorizationLabel;
     }
 }

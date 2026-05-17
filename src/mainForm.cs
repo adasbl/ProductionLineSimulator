@@ -296,13 +296,13 @@ namespace productionLine
         private void addUserButton_Click(object sender, EventArgs e)
         {
             addUserForm addUserWindow = new addUserForm();
-            addUserWindow.Show();
+            addUserWindow.ShowDialog();
         }
 
         private void modifyUsersButton_Click(object sender, EventArgs e)
         {
             editUsersForm editUsersWindow = new editUsersForm();
-            editUsersWindow.Show();
+            editUsersWindow.ShowDialog();
         }
     }
 }

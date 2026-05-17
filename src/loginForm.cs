@@ -33,14 +33,14 @@ namespace productionLine
             // 
             // usernameBox
             // 
-            usernameBox.Location = new Point(114, 55);
+            usernameBox.Location = new Point(115, 50);
             usernameBox.Name = "usernameBox";
             usernameBox.Size = new Size(100, 23);
             usernameBox.TabIndex = 0;
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(114, 122);
+            passwordBox.Location = new Point(115, 117);
             passwordBox.Name = "passwordBox";
             passwordBox.PasswordChar = '*';
             passwordBox.Size = new Size(100, 23);
@@ -51,7 +51,7 @@ namespace productionLine
             usernameLabel.AutoSize = true;
             usernameLabel.FlatStyle = FlatStyle.System;
             usernameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            usernameLabel.Location = new Point(114, 37);
+            usernameLabel.Location = new Point(115, 32);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new Size(67, 15);
             usernameLabel.TabIndex = 2;
@@ -61,7 +61,7 @@ namespace productionLine
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(114, 104);
+            passwordLabel.Location = new Point(115, 99);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(62, 15);
             passwordLabel.TabIndex = 3;
@@ -70,7 +70,7 @@ namespace productionLine
             // logInButton
             // 
             logInButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logInButton.Location = new Point(114, 177);
+            logInButton.Location = new Point(115, 172);
             logInButton.Name = "logInButton";
             logInButton.Size = new Size(100, 30);
             logInButton.TabIndex = 4;
