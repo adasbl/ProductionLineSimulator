@@ -56,12 +56,13 @@
             label3 = new Label();
             label4 = new Label();
             segmentTempLabel = new Label();
-            engineTimer = new System.Windows.Forms.Timer(components);
+            engineTempTimer = new System.Windows.Forms.Timer(components);
             coolingLabel = new Label();
             coolingButton = new Button();
             addUserButton = new Button();
             modifuUsersButton = new Button();
             timerLabel = new Label();
+            engineControlTimer = new System.Windows.Forms.Timer(components);
             cpuBackgroudPanel.SuspendLayout();
             ramBackgroudPanel.SuspendLayout();
             processPanel.SuspendLayout();
@@ -328,11 +329,11 @@
             segmentTempLabel.Text = "60°";
             segmentTempLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // engineTimer
+            // engineTempTimer
             // 
-            engineTimer.Enabled = true;
-            engineTimer.Interval = 250;
-            engineTimer.Tick += engineTimer_Tick;
+            engineTempTimer.Enabled = true;
+            engineTempTimer.Interval = 250;
+            engineTempTimer.Tick += engineTempTimer_Tick;
             // 
             // coolingLabel
             // 
@@ -387,6 +388,12 @@
             timerLabel.TabIndex = 26;
             timerLabel.Text = "--";
             timerLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // engineControlTimer
+            // 
+            engineControlTimer.Enabled = true;
+            engineControlTimer.Interval = 1000;
+            engineControlTimer.Tick += engineControlTimer_Tick;
             // 
             // mainForm
             // 
@@ -452,7 +459,7 @@
         private Label label3;
         private Label label4;
         private Label segmentTempLabel;
-        private System.Windows.Forms.Timer engineTimer;
+        private System.Windows.Forms.Timer engineTempTimer;
         private Label coolingLabel;
         private Button coolingButton;
         private Button addUserButton;
@@ -461,5 +468,6 @@
         private Label engineStateLabel;
         private Label fanInfoLabel;
         private Label timerLabel;
+        private System.Windows.Forms.Timer engineControlTimer;
     }
 }

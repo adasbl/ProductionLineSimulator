@@ -15,7 +15,7 @@ namespace productionLine
         private bool resetState = false;
         private bool stopState = false;
         private bool fanState = false;
-        private int attentionCounter = 31;
+        private int attentionCounter = 30;
         private int engineShutdownCounter = 11;
         private int tempWarningCounter = 10;
         private double engineTemperature = 30.0;
@@ -76,8 +76,8 @@ namespace productionLine
                 else if (attentionCounter < 0)
                 {
                     engineShutdownCounter -= 1;
-                    userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
                     timerLabel.Text = $"{engineShutdownCounter}";
+                    userAttentionButton.Text = $"USER INPUT NEEDED : {engineShutdownCounter}";
                     userAttentionButton.ForeColor = Color.IndianRed;
                     if (engineShutdownCounter <= 0)
                     {
@@ -87,78 +87,89 @@ namespace productionLine
             }
         }
 
-        private void engineTimer_Tick(object sender, EventArgs e)
+        private void engineTempTimer_Tick(object sender, EventArgs e)
         {
-            if (engineOn)
+            if (engineOn == true)
             {
-                if (fanState)
+                if (fanState == true)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 4.0 + 1.0;
+                    engineTemperature -= randomGenerator.NextDouble() * 2.0 + 1.0;
                 }
                 else
                 {
-                    engineTemperature += randomGenerator.NextDouble() * 4.0 + 1.0;
+                    engineTemperature += randomGenerator.NextDouble() * 2.0 + 1.0;
                 }
             }
             else
             {
-                if (fanState)
+                if (fanState == true)
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 3.0 + 2.0;
+                    engineTemperature -= randomGenerator.NextDouble() * 1.5 + 1.0;
                 }
                 else
                 {
-                    engineTemperature -= randomGenerator.NextDouble() * 1.5;
+                    engineTemperature -= randomGenerator.NextDouble() * 1.0;
                 }
             }
 
             if (engineTemperature < 20.0) engineTemperature = 20.0;
 
-            if (engineOn)
+            segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
+
+            if (engineTemperature >= 140)
             {
-                // Sprawdzamy, czy temperatura weszła w strefę krytyczną (Przegrzanie > 95, Wychłodzenie < 45)
-                if (engineTemperature >= 95.0 || engineTemperature <= 45.0)
+                machineStop();
+                MessageBox.Show("EMERGENCY STOP!\n\n Extreme temperature detected.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void engineControlTimer_Tick(object sender, EventArgs e)
+        {
+            if (tempWarningCounter <= 0)
+            {
+                machineStop();
+                MessageBox.Show("EMERGENCY STOP!\n\nCritical engine temperature warning ignored.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+            if (engineTemperature >= 95.0 )
+            {
+                tempInfoLabel.Text = $"Temperature: TOO HIGH {tempWarningCounter}";
+                if (engineOn) tempWarningCounter--;
+
+                // segmentTempLabel.ForeColor = tempWarningCounter % 2 == 0 ? Color.Red : Color.Yellow;
+                segmentTempLabel.ForeColor = Color.Red;
+
+            }
+            else if (engineTemperature <= 45.0)
+            {
+                tempInfoLabel.Text = $"Temperature: TOO LOW {tempWarningCounter}";
+                if (engineOn)
                 {
-                    tempWarningCounter--; // Zdejmujemy 1 sekundę z licznika ostrzeżenia
-
-                    // Pokazujemy na wyświetlaczu czas do wybuchu/zatarcia
-                    segmentTempLabel.Text = $"ERR {tempWarningCounter}s";
-
-                    // Efekt mrugania na czerwono, żeby zwrócić uwagę operatora
-                    segmentTempLabel.ForeColor = tempWarningCounter % 2 == 0 ? Color.Red : Color.Yellow;
-
-                    // Jeśli operator nie zdążył (timer spadł do 0)
-                    if (tempWarningCounter <= 0)
-                    {
-                        machineStop();
-                        MessageBox.Show("AWARYJNE ZATRZYMANIE LINII!\n\nZignorowano ostrzeżenie o krytycznej temperaturze silnika.", "Błąd krytyczny", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                        // Ustawiamy temperaturę na "bezpieczną", żeby maszyna nie weszła od razu w błąd po resecie
-                        if (engineTemperature >= 95.0) engineTemperature = 85.0;
-                        if (engineTemperature <= 45.0) engineTemperature = 55.0;
-                    }
+                    tempWarningCounter--;
+                    segmentTempLabel.ForeColor = Color.DeepSkyBlue;
                 }
                 else
                 {
-                    tempWarningCounter = 10;
-
-                    segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
-
-                    if (engineTemperature > 85.0) segmentTempLabel.ForeColor = Color.Orange;
-                    else if (engineTemperature < 55.0) segmentTempLabel.ForeColor = Color.DeepSkyBlue;
-                    else segmentTempLabel.ForeColor = Color.LimeGreen;
+                    segmentTempLabel.ForeColor = Color.White;
                 }
             }
             else
             {
-                segmentTempLabel.Text = $"{engineTemperature:0.0} °C";
-                segmentTempLabel.ForeColor = Color.Gray;
+                tempWarningCounter = 10;
+                tempInfoLabel.Text = "Temperature: NORMAL";
+
+                if (engineOn) segmentTempLabel.ForeColor = Color.Gray;
+                else segmentTempLabel.ForeColor = Color.White;
             }
         }
 
         private void userAttentionButton_Click(object sender, EventArgs e)
         {
             resetTimers();
+            userAttentionButton.Text = string.Empty;
+            userAttentionButton.ForeColor = SystemColors.ControlText;
+            timerLabel.Text = $"{attentionCounter}";
+
         }
 
         private void engineStartButton_Click(object sender, EventArgs e)
@@ -240,7 +251,7 @@ namespace productionLine
 
         private void resetTimers()
         {
-            attentionCounter = 31;
+            attentionCounter = 30;
             engineShutdownCounter = 11;
             tempWarningCounter = 10;
         }

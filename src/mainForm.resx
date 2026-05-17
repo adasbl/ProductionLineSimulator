@@ -211,7 +211,7 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="engineTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="engineTempTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>435, 17</value>
   </metadata>
   <data name="coolingButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -245,7 +245,7 @@
   <data name="addUserButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAt5JREFUeF7t0sFu20AQRMH8/08n16AwlByHuzK3u4B3DNc9yq9fVVVVVVVVVVVV
+        vwAADr8BOAVTJAAAAt5JREFUeF7t0sFu20AQRMH8/08n16AwlByHuzK3u4B3DNc9yq9fVVVVVVVVVVVV
         VVVVVVVVVbXK76EK4Q/f/wRh/NH7HyCIP/hUHcwfe6oO5o89VQfzx56qg/ljT9XB/LGn6mD+2FMFD/Su
         n8y/daqGo3y33Xx/RUdz7F2t5ns7Oo4D724V39nZMRy2srv5/Z09noN2dSe/vbNHc8zu7uJ3d/Zojtnd
         Xfzuzh7LIe/6Kv/du+7id3f0WA551Xf5nVfdyW+v6PEcdNX/8ntX7eTbU0dz7FV38btX7eK7U0dz7NTd
@@ -263,7 +263,7 @@
   <data name="modifuUsersButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAAXxJREFUeF7t2kGKXDEQRMG5/6XtfYIxv/unVExFwFtKqQPo5wcAAAAAAAAAAADY
+        vwAADr8BOAVTJAAAAXxJREFUeF7t2kGKXDEQRMG5/6XtfYIxv/unVExFwFtKqQPo5wcAAAAAAAAAAADY
         7M+CvpF3na4mhzb0VJ6/1etyYFNP5NlbvS4HNvVEnr3V63JgU0/k2Vu9Lgc29USevdXrcmBTT+X501Xk
         yKY+kXecqiaHNvWNvKtVXQ5u6lt539sdkaObekve+21H5fim3pR3f9px+YBNvS3vf9oV+YhNteTO/7oq
         H7Opptz6V2Pkw35zp+TujTc8ko/8jZ2U27feAQAAAAAAAADAVvlrRfc7Joc1p7oc1Lxqckhzq8gRza0i
@@ -272,4 +272,7 @@
         ihzR3CpyRHOryBHNrSaHNK+6HNScAAAAAAAAAAAAgKX+AgvUhZQpy2ayAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="engineControlTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>648, 19</value>
+  </metadata>
 </root>
