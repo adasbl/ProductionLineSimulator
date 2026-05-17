@@ -5,6 +5,8 @@ namespace productionLine
         [STAThread]
         static void Main()
         {
+            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
+
             ApplicationConfiguration.Initialize();
 
             loginForm loginWindow = new loginForm();

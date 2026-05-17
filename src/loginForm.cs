@@ -33,17 +33,17 @@ namespace productionLine
             // 
             // usernameBox
             // 
-            usernameBox.Location = new Point(149, 86);
+            usernameBox.Location = new Point(114, 55);
             usernameBox.Name = "usernameBox";
-            usernameBox.Size = new Size(100, 31);
+            usernameBox.Size = new Size(100, 23);
             usernameBox.TabIndex = 0;
             // 
             // passwordBox
             // 
-            passwordBox.Location = new Point(149, 160);
+            passwordBox.Location = new Point(114, 122);
             passwordBox.Name = "passwordBox";
             passwordBox.PasswordChar = '*';
-            passwordBox.Size = new Size(100, 31);
+            passwordBox.Size = new Size(100, 23);
             passwordBox.TabIndex = 1;
             // 
             // usernameLabel
@@ -51,9 +51,9 @@ namespace productionLine
             usernameLabel.AutoSize = true;
             usernameLabel.FlatStyle = FlatStyle.System;
             usernameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            usernameLabel.Location = new Point(149, 58);
+            usernameLabel.Location = new Point(114, 37);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(102, 25);
+            usernameLabel.Size = new Size(67, 15);
             usernameLabel.TabIndex = 2;
             usernameLabel.Text = "Username:";
             // 
@@ -61,16 +61,16 @@ namespace productionLine
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(149, 132);
+            passwordLabel.Location = new Point(114, 104);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(97, 25);
+            passwordLabel.Size = new Size(62, 15);
             passwordLabel.TabIndex = 3;
             passwordLabel.Text = "Password:";
             // 
             // logInButton
             // 
             logInButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            logInButton.Location = new Point(149, 216);
+            logInButton.Location = new Point(114, 177);
             logInButton.Name = "logInButton";
             logInButton.Size = new Size(100, 30);
             logInButton.TabIndex = 4;
@@ -80,7 +80,7 @@ namespace productionLine
             // 
             // loginForm
             // 
-            ClientSize = new Size(404, 301);
+            ClientSize = new Size(334, 241);
             Controls.Add(logInButton);
             Controls.Add(passwordLabel);
             Controls.Add(usernameLabel);

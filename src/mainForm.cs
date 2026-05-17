@@ -95,12 +95,12 @@ namespace productionLine
 
             if (engineOn)
             {
-                if (fanState) 
+                if (fanState)
                 {
                     double coolingPower = (engineTemperature / 30.0);
                     engineTemperature -= coolingPower + randomNoise;
                 }
-                else 
+                else
                 {
                     if (engineTemperature < targetWorkTemp)
                     {
@@ -291,6 +291,18 @@ namespace productionLine
             DateTime currentDateTime = DateTime.Now;
             clockLabel.Text = currentDateTime.ToString("HH:mm:ss");
             dateLabel.Text = currentDateTime.ToString("dd.MM.yyyy");
+        }
+
+        private void addUserButton_Click(object sender, EventArgs e)
+        {
+            addUserForm addUserWindow = new addUserForm();
+            addUserWindow.Show();
+        }
+
+        private void modifyUsersButton_Click(object sender, EventArgs e)
+        {
+            editUsersForm editUsersWindow = new editUsersForm();
+            editUsersWindow.Show();
         }
     }
 }
