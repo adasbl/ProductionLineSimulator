@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="parametersTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>94, 23</value>
   </metadata>
   <metadata name="userAttentionTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>217, 17</value>
+    <value>294, 23</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="engineStartButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -212,7 +212,7 @@
 </value>
   </data>
   <metadata name="engineTempTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>435, 17</value>
+    <value>512, 23</value>
   </metadata>
   <data name="coolingButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -263,7 +263,7 @@
   <data name="modifyUsersButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAXxJREFUeF7t2kGKXDEQRMG5/6XtfYIxv/unVExFwFtKqQPo5wcAAAAAAAAAAADY
+        vQAADr0BR/uQrQAAAXxJREFUeF7t2kGKXDEQRMG5/6XtfYIxv/unVExFwFtKqQPo5wcAAAAAAAAAAADY
         7M+CvpF3na4mhzb0VJ6/1etyYFNP5NlbvS4HNvVEnr3V63JgU0/k2Vu9Lgc29USevdXrcmBTT+X501Xk
         yKY+kXecqiaHNvWNvKtVXQ5u6lt539sdkaObekve+21H5fim3pR3f9px+YBNvS3vf9oV+YhNteTO/7oq
         H7Opptz6V2Pkw35zp+TujTc8ko/8jZ2U27feAQAAAAAAAADAVvlrRfc7Joc1p7oc1Lxqckhzq8gRza0i
@@ -273,9 +273,9 @@
 </value>
   </data>
   <metadata name="engineControlTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>648, 19</value>
+    <value>725, 25</value>
   </metadata>
   <metadata name="clockTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>871, 19</value>
+    <value>948, 25</value>
   </metadata>
 </root>

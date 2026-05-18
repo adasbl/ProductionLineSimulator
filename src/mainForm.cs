@@ -41,6 +41,26 @@ namespace productionLine
             else if (confirmedUser.AuthorizationLvl == 2) { accessLabel.Text = "operator"; }
             else if (confirmedUser.AuthorizationLvl == 1) { accessLabel.Text = "viewer"; }
             else { accessLabel.Text = "error"; }
+
+            if (confirmedUser.AuthorizationLvl != 3)
+            {
+                addUserButton.Enabled = false;
+                modifyUsersButton.Enabled = false;
+            }
+            else
+            {
+                addUserButton.Enabled = true;
+                modifyUsersButton.Enabled = true;
+            }
+
+            if (confirmedUser.AuthorizationLvl == 1)
+            {
+                coolingButton.Enabled = false;
+                engineStartButton.Enabled = false;
+                engineStopButton.Enabled = false;
+                eStopButton.Enabled = false;
+                resetButton.Enabled = false;
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -295,14 +315,20 @@ namespace productionLine
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            addUserForm addUserWindow = new addUserForm();
-            addUserWindow.ShowDialog();
+            if (confirmedUser.AuthorizationLvl == 3)
+            {
+                addUserForm addUserWindow = new addUserForm();
+                addUserWindow.ShowDialog();
+            }
         }
 
         private void modifyUsersButton_Click(object sender, EventArgs e)
         {
-            editUsersForm editUsersWindow = new editUsersForm();
-            editUsersWindow.ShowDialog();
+            if (confirmedUser.AuthorizationLvl == 3)
+            {
+                editUsersForm editUsersWindow = new editUsersForm();
+                editUsersWindow.ShowDialog();
+            }
         }
     }
 }
