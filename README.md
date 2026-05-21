@@ -17,7 +17,7 @@ A Control Desk Simulator of a "Production Line" developed using **.NET Windows F
 
 ---
 
-## 📂 Project File Structure
+## Project File Structure
 
 The project has been organized according to best practices regarding the separation of source code and documentation:
 
@@ -79,7 +79,7 @@ dotnet run
 
 ---
 
-## 🔐 Login and Test Accounts
+## Login and Test Accounts
 
 The user database is located in the `src/users.json` file. Below are the default login credentials for each access level (provided the JSON file has been initialized):
 
