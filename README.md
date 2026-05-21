@@ -41,6 +41,17 @@ ProductionLineSimulator/
 ├── productionLine.slnx      # New Visual Studio Solution file format
 └── README.md                
 ```
+
+---
+
+## Preview
+
+| Idle State & Low Temperature Warning | Normal Operation |
+| :---: | :---: |
+| ![Idle State](./docs/photos/rys2.png)<br>*The control panel when the engine is turned OFF and the temperature is sub-optimal.* | ![Normal Operation](./docs/photos/rys3.png)<br>*The system operating within the optimal temperature range with an 'Operator' access level.* |
+| **Critical State & Operator Verification** | **User Management (Admin Privileges)** |
+| ![Alarm State](./docs/photos/rys4.png)<br>*The interface showing elevated temperatures alongside the active Dead Man's Switch countdown.* | ![Admin Panel](./docs/photos/rys5.png)<br>*The management window for adding new users, accessible exclusively with Administrator privileges.* |
+
 ---
 
 ## System Requirements
