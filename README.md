@@ -17,33 +17,6 @@ A Control Desk Simulator of a "Production Line" developed using **.NET Windows F
 
 ---
 
-## Project File Structure
-
-The project has been organized according to best practices regarding the separation of source code and documentation:
-
-```text
-ProductionLineSimulator/
-├── .git/                    
-├── .vs/                     
-├── docs/                    # Project documentation
-├── src/                     # Application source code (.NET)
-│   ├── Assets/              # Graphical resources and icons
-│   ├── Properties/          # Assembly properties and configuration
-│   ├── addUserForm.cs       # Form for adding new users
-│   ├── editUsersForm.cs      # Form for modifying and deleting accounts
-│   ├── loginForm.cs         # Login window and User class definition
-│   ├── mainForm.cs          # Main control panel (logic and timers)
-│   ├── Program.cs           # Application entry point (Main)
-│   ├── productionLine.csproj  # C# project file
-│   └── users.json           # Local user database (JSON)
-├── .gitignore               
-├── LICENCE.md               
-├── productionLine.slnx      # New Visual Studio Solution file format
-└── README.md                
-```
-
----
-
 ## Preview
 
 | Idle State & Low Temperature Warning | Normal Operation |
@@ -91,6 +64,29 @@ The user database is located in the `src/users.json` file. Below are the default
 
 *New accounts can be added and modified directly within the application interface after logging into an account with Administrator privileges (Level 3).*
 
+---
 
+## Project File Structure
 
+The project has been organized according to best practices regarding the separation of source code and documentation:
 
+```text
+ProductionLineSimulator/
+├── .git/                    
+├── .vs/                     
+├── docs/                    # Project documentation
+├── src/                     # Application source code (.NET)
+│   ├── Assets/              # Graphical resources and icons
+│   ├── Properties/          # Assembly properties and configuration
+│   ├── addUserForm.cs       # Form for adding new users
+│   ├── editUsersForm.cs      # Form for modifying and deleting accounts
+│   ├── loginForm.cs         # Login window and User class definition
+│   ├── mainForm.cs          # Main control panel (logic and timers)
+│   ├── Program.cs           # Application entry point (Main)
+│   ├── productionLine.csproj  # C# project file
+│   └── users.json           # Local user database (JSON)
+├── .gitignore               
+├── LICENCE.md               
+├── productionLine.slnx      # New Visual Studio Solution file format
+└── README.md                
+```
